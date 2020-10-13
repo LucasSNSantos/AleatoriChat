@@ -1,0 +1,19 @@
+#page-landing{
+    display: flex;
+    flex-direction: row;
+}
+#page-landing aside{
+
+    background: #fff;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#page-landing .login{
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+}
