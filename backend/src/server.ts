@@ -13,4 +13,8 @@ app.get("/", (req,res) => {
 
 
 
-app.listen(4444);
+
+
+app.listen(4444, ()=> {
+    console.log("Servidor Online em http://localhost:4444/");
+});
