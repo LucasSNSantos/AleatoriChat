@@ -18,7 +18,11 @@
 }
 
 .App-header {
+<<<<<<< Updated upstream
   background-color: #282c34;
+=======
+  background-color: #22252c;
+>>>>>>> Stashed changes
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -80,7 +84,11 @@
   background: #61dafb;
   border-radius: 10px;
   border: 0;
+<<<<<<< Updated upstream
   font-family: 'Segoe UI';
+=======
+  font-family: Segoe UI;
+>>>>>>> Stashed changes
   font-size: 25px;
   text-align: center;
   width: 200px;
