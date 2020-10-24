@@ -13,12 +13,17 @@ function Landing() {
                     <span></span>
                 </h1>
 
+<<<<<<< Updated upstream
                 <img src={logo} className="App-logo" alt="logo" />
+=======
+                <img src={logo} className="App-logo" alt="logo"/>
+>>>>>>> Stashed changes
                 <Link to="/login" className="enter-login">
                     <button id="login-button">
                         Fazer Login
                     </button>
                 </Link>
+<<<<<<< Updated upstream
                 
                 <a
                     className="App-link"
@@ -28,6 +33,11 @@ function Landing() {
                 >
                     Não possui Conta? Registre-se!
                 </a>
+=======
+                <Link className="App-link" to="/createAccount">
+                    Não possui Conta? Registre-se!
+                </Link>
+>>>>>>> Stashed changes
             </header>
         </div>
     );
