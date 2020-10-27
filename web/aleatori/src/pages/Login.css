@@ -22,6 +22,48 @@
     color: white;
     position: relative;
     top: -30px;
+    overflow: hidden;
+}
+
+#Login-Aleatori-Box-Header span:nth-child(1)
+{
+    position: absolute;    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right,#25e0e0,#d504ff);
+    animation: animate1 2s linear infinite;
+}
+#Login-Aleatori-Box-Header span:nth-child(2)
+{
+    position: absolute;    
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to left,#25e0e0,#d504ff);
+    animation: animate2 2s linear infinite;
+}
+@keyframes animate1
+{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+    
+} 
+@keyframes animate2
+{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+    
 }
 
 #Login-Aleatori-Box-input{
@@ -51,4 +93,13 @@
 #Login-Aleatori-Box-forget-passwd{
     color: #4cd8dd;
     text-align: center;
+}
+#Login-Aleatori-Box-login_submit{
+    color: #4cd8dd;
+    text-align: center;
+    background: #3a3f49;
+    width: 120px;
+    text-decoration: none;
+    height: 35px;
+    border-radius: 5px;
 }

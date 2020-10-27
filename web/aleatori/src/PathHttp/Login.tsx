@@ -7,14 +7,21 @@ function Login(){
         <div className="Login-Aleatori">
             
             <form className="Login-Aleatori-Box">
-                <h1 id="Login-Aleatori-Box-Header">Aleatori Chat</h1>
+                <h1 id="Login-Aleatori-Box-Header">Aleatori Chat
+                <span></span>
+                <span></span>
+                </h1>
                 <h2 id="Login-Aleatori-Box-input">Username</h2>
                 <input type="Username"/>
                 <h2 id="Login-Aleatori-Box-input">Password</h2>
                 <input type="Password"/>
-                <Link id="Login-Aleatori-Box-forget-passwd" to="/">
+                <Link id="Login-Aleatori-Box-login_submit" to="/Mainpage">
+                    Login
+                </Link>
+                <Link id="Login-Aleatori-Box-forget-passwd" to="/resetPasswd">
                     Esqueceu a senha?
                 </Link>
+                
             </form>
         </div>
         
