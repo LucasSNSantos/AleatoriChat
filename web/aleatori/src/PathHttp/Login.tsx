@@ -15,7 +15,7 @@ function Login(){
                 <input type="Username"/>
                 <h2 id="Login-Aleatori-Box-input">Password</h2>
                 <input type="Password"/>
-                <Link id="Login-Aleatori-Box-login_submit" to="/Mainpage">
+                <Link id="Login-Aleatori-Box-login_submit" to="/MainPage">
                     Login
                 </Link>
                 <Link id="Login-Aleatori-Box-forget-passwd" to="/resetPasswd">
