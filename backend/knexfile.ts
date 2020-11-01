@@ -8,7 +8,7 @@ export default  {
     connection: {
       host: "127.0.0.1",
       database: "aleatoriDB",
-      user: "postgres",
+      user: "Aleatori_user",
       password: "00000"
     }
   },
@@ -46,3 +46,4 @@ export default  {
   }
 
 };
+
