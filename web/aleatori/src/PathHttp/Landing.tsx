@@ -2,17 +2,13 @@ import React from 'react';
 import logo from '../logo.svg';
 import '../pages/Landing.css';
 import {Link} from 'react-router-dom'; 
+import NavBar from '../Components/NavBar';
 
 function Landing() {
     return (
         <div className="App">
+             <NavBar></NavBar>
             <header className="App-header">
-                <h1 id="h1-aleatori">
-                    Aleatori Chat
-                    <span></span>
-                    <span></span>
-                </h1>
-
                 <img src={logo} className="App-logo" alt="logo"/>
                 <Link to="/login" className="enter-login">
                     <button id="login-button">
