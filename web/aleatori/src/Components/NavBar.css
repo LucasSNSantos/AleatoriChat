@@ -1,0 +1,78 @@
+.navbar
+{
+    background: linear-gradient(90deg, rgb(20,27,27) 0%,  #22252c 100%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.navbar-logo
+{
+    color: white;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+#NavBar-Header
+{
+    font-size: calc(30px);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    top: -15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#NavBar-Header span:nth-child(1)
+{
+    position: absolute;    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right,#25e0e0,#d504ff);
+    animation: animate1 2s linear infinite;
+}
+#NavBar-Header span:nth-child(2)
+{
+    position: absolute;    
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to left,#25e0e0,#d504ff);
+    animation: animate2 2s linear infinite;
+}
+@keyframes animate1
+{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+    
+} 
+@keyframes animate2
+{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+@media screen and (max-width: 960px){
+    .navbar-logo{
+        top: 0;
+        left: 0;
+        position: absolute;
+        transform: translate(25%, 50%);
+    }
+}
