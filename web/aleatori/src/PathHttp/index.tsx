@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Landing from './Components/Landing';
+import Landing from './Login';
 
 ReactDOM.render(
   <React.StrictMode>

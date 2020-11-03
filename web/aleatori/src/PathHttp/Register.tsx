@@ -1,4 +1,3 @@
-import logo from '../logo.svg';
 import {Link} from 'react-router-dom';
 import React from 'react';
 import Navbar from '../Components/NavBar';

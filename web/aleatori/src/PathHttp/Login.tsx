@@ -1,6 +1,6 @@
 import React from 'react'
 //import {Link} from 'react-router-dom'
-import '../global.css'
+import '../pages/global.css'
 import '../pages/Login.css'
 import react_logo from '../logo.svg'
 import Navbar from '../Components/NavBar'
