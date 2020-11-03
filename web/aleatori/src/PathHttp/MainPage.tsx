@@ -8,16 +8,16 @@ function MainPage(){
             <NavBar></NavBar>           
             <ul className="feed">
                 <li>
-                    lul
+                    sala#1
                 </li>
                 <li>
-                    dwandj
+                sala#2
                 </li>
                 <li>
-                    bdahwbdh
+                sala#3
                 </li>
                 <li>
-                    hawudua
+                sala#4
                 </li>
             </ul>
             <div className="tags-div">
@@ -34,7 +34,7 @@ function MainPage(){
                 </table>
             </div>
             <div className="user-div">
-                <p>adad</p>
+                <p>profile WIP!</p>
             </div>
         </div>
     );

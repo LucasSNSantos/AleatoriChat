@@ -1,105 +1,69 @@
-.Login-Aleatori{
-    background: linear-gradient(to bottom, #25989c , #791cc5 205%);
-    min-height: 100vh;
+#landing-page{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+    height: 100vh;
+    
+    background: #495369;
+    
 }
 
-.Login-Aleatori-Box{
+#landing-page .main{
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    
+    height: 100%;
+    max-height: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 12px;
+    border-radius: 10px;
+    
     background: #22252c;
-    min-height: 80vh;
-    min-width: 50vw;
+
+    box-shadow: 10px 5px 5px black;
+}
+#landing-page .main img{
+    position: absolute;
+    top: 125px;
+}
+
+#landing-page .main form .user_auth{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
 }
-
-#Login-Aleatori-Box-Header{
-    font-size: calc(30px);
-    color: white;
-    position: relative;
-    top: -30px;
-    overflow: hidden;
-}
-
-#Login-Aleatori-Box-Header span:nth-child(1)
-{
-    position: absolute;    
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right,#25e0e0,#d504ff);
-    animation: animate1 2s linear infinite;
-}
-#Login-Aleatori-Box-Header span:nth-child(2)
-{
-    position: absolute;    
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to left,#25e0e0,#d504ff);
-    animation: animate2 2s linear infinite;
-}
-@keyframes animate1
-{
-    0%{
-        transform: translateX(-100%);
-    }
-    100%{
-        transform: translateX(100%);
-    }
-    
-} 
-@keyframes animate2
-{
-    0%{
-        transform: translateX(100%);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
-    
-}
-
-#Login-Aleatori-Box-input{
-    font-size: calc(18px);
-    color: #65696d;
-    position: relative;
-    left: -160px;
-    top: -25px;
-}
-
-.Login-Aleatori-Box input[type = 'Username'], .Login-Aleatori-Box input[type = 'Password']{
-    font-size: 18px;
-    top: -45px;
-    height: 40px;
+#landing-page .main form .pass_auth{
     display: flex;
-    position: relative;
-    border: none;
-    font: bold 600;
-    color: white;
-    font-family: Arial;
-    background: #3a3f49;
-    outline: #25989c unset;
-    width: 30vw;
-    text-align: left;
-    margin: 15px auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-#Login-Aleatori-Box-forget-passwd{
-    color: #4cd8dd;
-    text-align: center;
-}
-#Login-Aleatori-Box-login_submit{
-    color: #4cd8dd;
-    text-align: center;
-    background: #3a3f49;
-    width: 120px;
-    text-decoration: none;
-    height: 35px;
+
+#landing-page .main a{
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    bottom: 50px;
+    right: 20px;
+    background-color: #30394d;
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
     border-radius: 5px;
+    transition: 0.5s;
 }
+
+#landing-page .main a:hover{
+    background-color: skyblue;
+}
+
