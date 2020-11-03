@@ -1,32 +1,35 @@
-.Main-Page{
-    background: #31343b;
-    height: 100vh;
-    width: 100%;
-    position: relative;
+.navbar
+{
+    
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
-
-.Main-Page-Aleatori-Box{
-    background: #22252c;
-    position: relative;
-    width: 100vw;
-    height: 10vh;
+.navbar-logo
+{
+    color: white;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
 }
-
-#Main-Page-Aleatori-Box-Header{
+#NavBar-Header
+{
     font-size: calc(30px);
     color: white;
     position: relative;
-    top: -10px;
     overflow: hidden;
+    top: -15px;
     display: flex;
     flex-direction: column;
-    width: 186px;
 }
 
-#Main-Page-Aleatori-Box-Header span:nth-child(1)
+#NavBar-Header span:nth-child(1)
 {
     position: absolute;    
     top: 0;
@@ -36,7 +39,7 @@
     background: linear-gradient(to right,#25e0e0,#d504ff);
     animation: animate1 2s linear infinite;
 }
-#Main-Page-Aleatori-Box-Header span:nth-child(2)
+#NavBar-Header span:nth-child(2)
 {
     position: absolute;    
     bottom: 0;
@@ -63,5 +66,13 @@
     }
     100%{
         transform: translateX(-100%);
+    }
+}
+@media screen and (max-width: 960px){
+    .navbar-logo{
+        top: 0;
+        left: 0;
+        position: absolute;
+        transform: translate(25%, 50%);
     }
 }
