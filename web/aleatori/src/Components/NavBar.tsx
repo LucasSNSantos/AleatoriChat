@@ -9,13 +9,11 @@ function NavBar(){
         <>
             <nav className="navbar">
                 <div className="navbar-container">
-                    
                         <h1 id="NavBar-Header">
                             Aleatori Chat
                             <span></span>
                             <span></span>
                         </h1>
-                    
                 </div>
             </nav>
         </>

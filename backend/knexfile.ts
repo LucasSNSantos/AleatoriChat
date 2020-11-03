@@ -7,9 +7,9 @@ export default  {
     client: "pg",
     connection: {
       host: "127.0.0.1",
-      database: "aleatorichat",
-      user: "postgres",
-      password: "0000"
+      database: "aleatoriDB",
+      user: "Aleatori_user",
+      password: "00000"
     }
   },
 
@@ -46,3 +46,4 @@ export default  {
   }
 
 };
+
