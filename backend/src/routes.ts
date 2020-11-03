@@ -1,10 +1,10 @@
-import {response, Router} from 'express';
-import AccountsController from './Controllers/AccountsController';
+import {Router} from 'express';
 import UserController from './Controllers/UserController';
 const routes = Router();
 
-routes.get('/Accounts/:id',AccountsController.Show);
-routes.get('/User', UserController.index);
-routes.get('/',(request, response)=>{response.json({message:"Aleatori Chat"})});
+routes.get('/users/',UserController.index);
+routes.get('/users/:id',UserController.Show);
+routes.post('/users/',UserController.create)
+routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 
 export default routes;

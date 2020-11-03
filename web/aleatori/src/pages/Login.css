@@ -7,9 +7,21 @@
     height: 100vh;
     
     background: #495369;
-    
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
 }
 
+
+body{
+    color: #FFF;
+    background: #ebf2f5;
+}
+
+body,input,button,textarea{
+    /*Fonte*/
+    font: 600 18px sans-serif;
+}
 #landing-page .main{
     position: relative;
     width: 100%;
