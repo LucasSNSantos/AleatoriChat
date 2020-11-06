@@ -13,7 +13,7 @@ function Login(){
                 <Navbar/>
                 <img src={react_logo} width="50" height="50" />
                 <form className="user_auth">
-                    <p>User:</p>
+                    <p>User: </p>
                     <input className="user_input"></input>
                 </form>
                 <form className="pass_auth">

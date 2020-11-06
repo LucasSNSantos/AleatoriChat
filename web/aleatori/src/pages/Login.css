@@ -54,10 +54,16 @@
     border-radius: 5px;
 }
 
-#landing-page .main form .user_auth{
+#landing-page .main .user_auth{
+    
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 14px;
+}
+#landing-page .main .user_auth p{
+    padding-right: 40px;
 }
 
 #landing-page .main .btn_go{
@@ -75,11 +81,14 @@
     transition: 0.5s;
 }
 
-#landing-page .main form .pass_auth{
+#landing-page .main .pass_auth{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: last baseline;
+    align-items: flex-start;
+}
+#landing-page .main .pass_auth p{
+    padding-right: 5px;
 }
 
 

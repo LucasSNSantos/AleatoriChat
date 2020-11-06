@@ -3,10 +3,10 @@ import '../pages/global.css'
 
 
 
-function confirmation(){
+function Confirmation(){
     return(
     <h1>confirmed or not</h1>
     );
 }
 
-export default confirmation;
+export default Confirmation;

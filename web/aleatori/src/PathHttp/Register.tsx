@@ -32,7 +32,7 @@ export default function Registro()
                             <input type="Username" name="key" placeholder="Email" />
                         </div>
                     </div>
-                    <Link to="/login" className="enter-login">
+                    <Link to="/confirmation" className="enter-login">
                     <button id="register-button">
                         Registrar
                     </button>
