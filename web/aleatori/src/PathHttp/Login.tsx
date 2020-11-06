@@ -11,7 +11,7 @@ function Login(){
         <div id="landing-page">
             <div className="main">
                 <Navbar/>
-                <img src={react_logo} width="50" height="50" />
+                <img src={react_logo} width="50" height="50" alt="LOGINHO"/>
                 <form className="user_auth">
                     <p>User: </p>
                     <input className="user_input"></input>
