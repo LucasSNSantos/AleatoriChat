@@ -17,7 +17,7 @@ export default function Registro()
                             <h2 id="Register-Aleatori-Box-input"> Usuario </h2>
                             <input type="Username" name="usuario" placeholder="Nome de usuario" />
                         </div>
-
+                            
                         <div>
                             <h2 id="Register-Aleatori-Box-input"> Senha </h2>
                             <input type="Username" name="senha" placeholder="Senha" />

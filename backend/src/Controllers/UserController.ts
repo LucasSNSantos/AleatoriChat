@@ -19,19 +19,19 @@ export default {
         return response.status(200).json(user);
     },
     async create(request: Request, response:Response){
-        const { username,user_password,user_email,securitykey,description } = request.body
+        const { username,user_password,user_email,description } = request.body
         const data = {
             username: username,
             user_password:user_password,
             user_email:user_email,
-            securitykey:securitykey,
+            securitykey:'0000',
             description:description
         }
         const schema = yup.object().shape({
             username: yup.string().required(),
             user_password: yup.string().required(),
             user_email:yup.string().required(),
-            securitykey:yup.string().required(),
+            securitykey:yup.string().required().min(4),
             description:yup.string().required(),
         })
 
@@ -40,13 +40,7 @@ export default {
         })
             
         
-        await db('tb_user').insert({
-            username: username,
-            user_password:user_password,
-            user_email:user_email,
-            securitykey:securitykey,
-            description:description
-        })
+        await db('tb_user').insert(data)
 
         return response.status(201).send('OK')
     }

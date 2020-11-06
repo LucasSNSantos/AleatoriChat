@@ -5,7 +5,7 @@ import '../pages/Login.css'
 import react_logo from '../logo.svg'
 import Navbar from '../Components/NavBar'
 
-function Landing(){
+function Login(){
 
     return (
         <div id="landing-page">
@@ -36,4 +36,4 @@ function Landing(){
 }
 
 
-export default Landing; 
+export default Login; 
