@@ -1,11 +1,11 @@
-import react from 'react'
+import React from 'react'
 import '../pages/global.css'
 
 
 
 function confirmation(){
     return(
-    <h1>{/** Telinha com mensagem de carregamento */}</h1>
+    <h1>confirmed or not</h1>
     );
 }
 
