@@ -1,5 +1,5 @@
 import React from 'react'
-//import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
 import react_logo from '../logo.svg'
@@ -20,10 +20,16 @@ function Landing(){
                     <p>Password:</p>
                     <input className="pass_input"></input>
                 </form>
-                
-                <a className="btn_go"> 
-                    Sign In!
-                </a>
+                <Link to="/Register">
+                        <a className="register">
+                               Sign-Up!
+                        </a>
+                </Link>
+                <Link to="/MainPage">
+                    <a className="btn_go"> 
+                        Sign In!
+                    </a>
+                </Link>
             </div>
         </div>
     );
