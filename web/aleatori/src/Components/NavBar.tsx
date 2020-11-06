@@ -5,7 +5,6 @@ import './NavBar.css';
 
 function NavBar(){
     return(
-        <>
             <nav className="navbar">
                 <div className="navbar-container">
                         <h1 id="NavBar-Header">
@@ -15,7 +14,6 @@ function NavBar(){
                         </h1>
                 </div>
             </nav>
-        </>
     );
 }
 

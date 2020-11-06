@@ -9,7 +9,7 @@ export default function Registro()
         <><Navbar></Navbar>
             <div className="Register-Aleatori-Box">
                 <h1 id="Register-Aleatori-Box-Header">
-                    Registre-se no Aleatori Chat
+                    Registre-se no Aleatori Chat!
                 </h1>
                 <form method="get" action="/Login">
                     <div className="input-container">
