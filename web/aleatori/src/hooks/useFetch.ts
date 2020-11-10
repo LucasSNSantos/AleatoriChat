@@ -1,5 +1,5 @@
-import useSWR from 'swr'
-import api from '../api/api'
+import useSWR from 'swr';
+import api from '../api/api';
 
 function useAxios<Data = any,Error = any>(url: string){
     const {data,error,mutate} = useSWR<Data,Error>(url,async url =>{
