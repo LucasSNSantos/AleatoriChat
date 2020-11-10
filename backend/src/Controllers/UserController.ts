@@ -1,4 +1,5 @@
 import {Request,Response} from 'express';
+import * as yup from 'yup'
 import db from '../Database/connection';
 
 export default {
@@ -18,15 +19,28 @@ export default {
         return response.status(200).json(user);
     },
     async create(request: Request, response:Response){
-        const { username,user_password,user_email,securitykey,description } = request.body
-
-        await db('tb_user').insert({
+        const { username,user_password,user_email,description } = request.body
+        const data = {
             username: username,
             user_password:user_password,
             user_email:user_email,
-            securitykey:securitykey,
+            securitykey:'0000',
             description:description
+        }
+        const schema = yup.object().shape({
+            username: yup.string().required(),
+            user_password: yup.string().required(),
+            user_email:yup.string().required(),
+            securitykey:yup.string().required().min(4),
+            description:yup.string().required(),
         })
+
+        await schema.validate(data,{
+            abortEarly:false
+        })
+            
+        
+        await db('tb_user').insert(data)
 
         return response.status(201).send('OK')
     }

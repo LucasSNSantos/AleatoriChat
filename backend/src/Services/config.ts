@@ -8,4 +8,4 @@ class Configs
 }
 
 
-export default  new Configs
+export default new Configs

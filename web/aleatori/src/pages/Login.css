@@ -46,26 +46,44 @@ body,input,button,textarea{
     position: absolute;
     top: 125px;
 }
-
-#landing-page .main form .user_auth{
-    display: flex;
-    flex-direction: row;
+#landing-page .main a{
+    color: #FFF;
+    font-size: 14px;
+    display:flex;
+    justify-content: center;
     align-items: center;
+    background: #30394d;
 }
-#landing-page .main form .pass_auth{
+#landing-page .main .register{
+    position: absolute;
+
+    height: 40px;
+    width: 70px;
+    bottom: 20px;
+    bottom: 50px;
+    left: 20px;
+
+    border-radius: 5px;
+}
+
+#landing-page .main .user_auth{
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 14px;
+}
+#landing-page .main .user_auth p{
+    padding-right: 40px;
 }
 
-#landing-page .main a{
+#landing-page .main .btn_go{
     position: absolute;
     height: 40px;
     width: 70px;
     bottom: 50px;
     right: 20px;
-    background-color: #30394d;
     
     display:flex;
     justify-content: center;
@@ -74,6 +92,17 @@ body,input,button,textarea{
     border-radius: 5px;
     transition: 0.5s;
 }
+
+#landing-page .main .pass_auth{
+    display: flex;
+    flex-direction: row;
+    justify-content: last baseline;
+    align-items: flex-start;
+}
+#landing-page .main .pass_auth p{
+    padding-right: 5px;
+}
+
 
 #landing-page .main a:hover{
     background-color: skyblue;

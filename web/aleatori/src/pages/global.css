@@ -1,0 +1,20 @@
+/*
+Do not write nothing here
+
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+body{
+    color: #FFF;
+    background: #ebf2f5;
+}
+
+body,input,button,textarea{
+    /*Fonte*/
+    font: 600 18px sans-serif;
+}
