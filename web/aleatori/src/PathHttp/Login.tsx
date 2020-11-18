@@ -1,31 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../pages/Login.css';
+import React from 'react'
+import {Link} from 'react-router-dom'
+import '../pages/global.css'
+import '../pages/Login.css'
+import react_logo from '../logo.svg'
+import Navbar from '../Components/NavBar'
 
-function Login() {
+function Login(){
+
     return (
-        <div className="Login-Aleatori">
-
-            <form className="Login-Aleatori-Box">
-                <h1 id="Login-Aleatori-Box-Header">Aleatori Chat
-                <span></span>
-                    <span></span>
-                </h1>
-                <h2 id="Login-Aleatori-Box-input">Username</h2>
-                <input type="Username" />
-                <h2 id="Login-Aleatori-Box-input">Password</h2>
-                <input type="Password" />
-                <Link id="Login-Aleatori-Box-login_submit" to="/MainPage">
-                    Login
+        <div id="landing-page">
+            <div className="main">
+                <Navbar/>
+                <img src={react_logo} width="50" height="50" alt="LOGINHO"/>
+                <form className="user_auth">
+                    <p>User: </p>
+                    <input className="user_input"></input>
+                </form>
+                <form className="pass_auth">
+                    <p>Password:</p>
+                    <input className="pass_input"></input>
+                </form>
+                <Link to="/Register">
+                        <a className="register">
+                               Sign-Up!
+                        </a>
                 </Link>
-                <Link id="Login-Aleatori-Box-forget-passwd" to="/resetPasswd">
-                    Esqueceu a senha?
+                <Link to="/MainPage">
+                    <a className="btn_go"> 
+                        Sign In!
+                    </a>
                 </Link>
-
-            </form>
+            </div>
         </div>
-
     );
 }
 
-export default Login;
+
+export default Login; 
