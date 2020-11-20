@@ -4,22 +4,24 @@ import db from '../Database/connection';
 
 export default {
 
-    async  index(req:Request, res:Response) 
+    async Show(req:Request, res:Response) 
     {
         const user = await db('tb_user').select('*');
-        console.log(user);
+        //console.log(user);
         return res.status(200).json(user);
     },
-    async Show(request: Request, response:Response){
-        const { id } = request.params;
 
-        const user = db('tb_user').select('*').where('id',id)
-        
-        
-        return response.status(200).json(user);
+    async index(req: Request, res:Response){
+            const { id } = req.params;
+
+            const user = await db('tb_user').select('*').where('id',id); 
+            return res.status(200).json(user);
     },
+
     async create(request: Request, response:Response){
         const { username,user_password,user_email,description } = request.body
+        console.log(request.body)
+
         const data = {
             username: username,
             user_password:user_password,
@@ -38,11 +40,18 @@ export default {
         await schema.validate(data,{
             abortEarly:false
         })
-            
+        try{      
+            await db('tb_user').insert(data);
+            //trigger de cadastro
         
-        await db('tb_user').insert(data)
-
-        return response.status(201).send('OK')
+            if(await db('tb_user').select('username').where('username',data.username)){
+                return response.status(201).send('OK, cadastrado.');            
+            }
+        }catch(error){
+            //Pegou a exception do banco ---
+            return response.status(400).send('Nome ou Email já cadastrados.');
+        }
+        
     }
 
 
