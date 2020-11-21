@@ -24,7 +24,7 @@ export default {
             username: username,
             user_password:user_password,
             user_email:user_email,
-            securitykey:'0000',
+            securitykey:"0000",
             description:description
         }
         const schema = yup.object().shape({

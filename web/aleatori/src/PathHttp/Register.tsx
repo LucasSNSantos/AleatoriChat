@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
 import Navbar from '../Components/NavBar';
+import api from '../api/api'
 import '../pages/Register.css';
 
 export default function Registro()
@@ -33,10 +34,10 @@ export default function Registro()
                         </div>
                     </div>
                     <Link to="/confirmation" className="enter-login">
-                    <button id="register-button">
-                        Registrar
-                    </button>
-                </Link>
+                        <button id="register-button" onClick={}>
+                            Registrar
+                        </button>
+                    </Link>
                 </form>
             </div></>
 
@@ -44,4 +45,8 @@ export default function Registro()
 
 
     );
+}
+
+function isGood(){
+    
 }
