@@ -9,6 +9,7 @@ function Login(){
 
     return (
         <div id="landing-page">
+            
             <div className="main">
                 <Navbar/>
                 <img src={react_logo} width="50" height="50" alt="LOGINHO"/>

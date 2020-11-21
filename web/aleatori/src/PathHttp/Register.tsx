@@ -29,7 +29,7 @@ export default function Registro()
                         </div>
                         <div>
                             <h2 id="Register-Aleatori-Box-input"> Chave Secreta </h2>
-                            <input type="Username" name="key" placeholder="Email" />
+                            <input type="Username" name="key" placeholder="Key" />
                         </div>
                     </div>
                     <Link to="/confirmation" className="enter-login">

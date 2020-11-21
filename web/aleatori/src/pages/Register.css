@@ -10,7 +10,9 @@ form {
     flex-direction: column;
     width: 50%;
 } */
-
+body{
+    background: #1a1b1d;
+}
 .Register-Aleatori{
     background: linear-gradient(to bottom, #25989c , #791cc5 205%);
     min-height: 100vh;
@@ -32,7 +34,6 @@ form {
 
 #Register-Aleatori-Box-Header{
     font-size: calc(30px);
-    color: white;
     position: relative;
     top: -30px;
     overflow: hidden;
@@ -81,7 +82,6 @@ form {
 
 #Register-Aleatori-Box-input{
     font-size: calc(18px);
-    color: #65696d;
 }
 
 .Register-Aleatori-Box input[type = 'Username'], .Login-Aleatori-Box input[type = 'Password']{
@@ -90,7 +90,6 @@ form {
     display: flex;
     border: none;
     font: bold 600;
-    color: white;
     font-family: Arial;
     background: #3a3f49;
     outline: #25989c unset;
