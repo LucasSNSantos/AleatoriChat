@@ -1,0 +1,18 @@
+.Tag-Text{
+    flex-direction: column;
+    border-radius: 20px;
+    height: 32px;
+    width: 100%;
+    margin-right: 8px;
+    padding: 0 8px;
+    background: #414141;
+    color: #91cfe2;
+    font-size: 18px;
+    font-family: Segoe UI;
+    text-decoration: none;
+}
+.Tag-Box{
+    align-items: center;
+    min-width: 0;
+    display: block;
+}
