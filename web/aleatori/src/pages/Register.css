@@ -82,6 +82,7 @@ body{
 
 #Register-Aleatori-Box-input{
     font-size: calc(18px);
+    padding: 12px 10px;
 }
 
 .Register-Aleatori-Box input[type = 'Username'], .Login-Aleatori-Box input[type = 'Password']{
@@ -89,6 +90,7 @@ body{
     height: 40px;
     display: flex;
     border: none;
+    padding: 10px 10px;
     font: bold 600;
     font-family: Arial;
     background: #3a3f49;
