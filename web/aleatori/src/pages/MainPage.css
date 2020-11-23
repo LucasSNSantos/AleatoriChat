@@ -1,5 +1,5 @@
 .Main-Page{
-    background: #31343b;
+    background: #1a1b1d;
     height: 100%;
     width: 100%;
     position: relative;
@@ -7,6 +7,7 @@
     flex-direction: column;
     overflow: hidden;
 }
+
 .Main-Page-panel{
     background: #495369;
     height: 100vh;
