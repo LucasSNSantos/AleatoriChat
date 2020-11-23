@@ -19,9 +19,7 @@ export default {
     },
 
     async create(request: Request, response:Response){
-        const { username,user_password,user_email,description} = request.body
-        console.log(request.body)
-
+        const { username,user_password,user_email,description} = request.body;
         const data = {
             username: username,
             user_password:user_password,
