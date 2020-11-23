@@ -6,16 +6,27 @@ export default {
 
     async Show(req:Request, res:Response) 
     {
-        const user = await db('tb_user').select('*');
-        //console.log(user);
-        return res.status(200).json(user);
+        try
+        {
+            const user = await db('tb_user').select('*');
+            return res.status(200).json(user);
+        }catch(error)
+        {
+            console.log(error)
+        }
     },
 
     async index(req: Request, res:Response){
             const { id } = req.params;
 
-            const user = await db('tb_user').select('*').where('id',id); 
-            return res.status(200).json(user);
+           try
+            {
+                const user = await db('tb_user').select('*').where('id',id); 
+                return res.status(200).json(user);
+            }catch(error)
+            {
+                return res.status(404).send("Erro");
+            }
     },
 
     async create(request: Request, response:Response){

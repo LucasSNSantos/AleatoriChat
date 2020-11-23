@@ -10,3 +10,6 @@ class chat_sala
     favorite:boolean;
 }
 export default chat_sala;
+
+
+//algoritmo de similaridade
