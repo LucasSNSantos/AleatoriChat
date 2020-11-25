@@ -15,25 +15,45 @@ function Login(){
                 <img src={react_logo} width="50" height="50" alt="LOGINHO"/>
                 <form className="user_auth">
                     <p>User: </p>
-                    <input className="user_input"></input>
+                    <input id="username_" className="user_input"></input>
                 </form>
                 <form className="pass_auth">
                     <p>Password:</p>
-                    <input className="pass_input"></input>
+                    <input id="pass_" className="pass_input"></input>
                 </form>
                 <Link to="/Register">
                         <a className="register">
                                Sign-Up!
                         </a>
                 </Link>
-                <Link to="/MainPage">
-                    <a className="btn_go"> 
-                        Sign In!
-                    </a>
-                </Link>
+                <a className="btn_go" role="button" onClick={Validate_Login}> 
+                    Sign In!
+                </a>
             </div>
         </div>
     );
+
+    async function Validate_Login(){
+        try{
+            const username = document.querySelector('input[id="username_"]') as HTMLInputElement;
+            const user_password = document.querySelector('input[id="pass_"]') as HTMLInputElement;
+
+            if(username.value !== "" && user_password.value !== ""){
+                const data = {
+                    username:username.value,
+                    user_password:user_password.value,
+                }
+                //Validação
+                window.location.pathname = "/MainPage"
+            }else 
+                throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});
+           
+        }catch(error){
+            alert(error);
+        }
+
+    }
+   
 }
 
 

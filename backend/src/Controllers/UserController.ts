@@ -1,5 +1,5 @@
 import {Request,Response} from 'express';
-//import * as yup from 'yup'
+import * as yup from 'yup'
 import db from '../Database/connection';
 
 export default {
@@ -38,17 +38,18 @@ export default {
             securitykey:"0000",
             description:description
         }
-        // const schema = yup.object().shape({
-        //     username: yup.string().required(),
-        //     user_password: yup.string().required(),
-        //     user_email:yup.string().required(),
-        //     securitykey:yup.string().required().min(4),
-        //     description:yup.string().required(),
-        // })
+        /*const schema = yup.object().shape({
+            username: yup.string().required(),
+            user_password: yup.string().required(),
+            user_email:yup.string().required(),
+            securitykey:yup.string().required().min(4),
+            description:yup.string().required(),
+        })
 
-        // await schema.validate(data,{
-        //     abortEarly:false
-        // })
+        await schema.validate(data,{
+            abortEarly:false
+        })
+        */
         try{      
             await db('tb_user').insert(data);
             //trigger de cadastro
