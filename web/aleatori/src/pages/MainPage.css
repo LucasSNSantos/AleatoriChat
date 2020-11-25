@@ -10,7 +10,7 @@
 
 .Main-Page-panel{
     background: #495369;
-    height: 100vh;
+    height: 1000vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -21,16 +21,18 @@
     position: relative;
     height: 120px;
     width: 600px;
+    align-items: center;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     top: 20px;
     right: 200px;
 }
 .user_tags{
     margin-top: 10px;
+    height: 80px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 .Main-Page-User{
@@ -41,6 +43,7 @@
     height: 200px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
     top: -75px;
     left: 400px;
@@ -50,9 +53,6 @@
     display: flex;
     width: 580px;
     height: 500px;
-    border-color: rgb(144, 144, 145);
-    border-width: 2px;
-    border-style: solid;
     flex-direction: column;
     align-items: center;
     position: relative;
