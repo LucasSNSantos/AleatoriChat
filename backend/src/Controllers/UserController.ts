@@ -50,7 +50,72 @@ export default {
             return response.status(400).send('Nome ou Email já cadastrados.');
         }
         
-    }
+    },
 
+    //Mostra *TODAS* as permissoes do usuario
+    async UserPermissions(req:Request, res: Response)
+    {
+        const user_id = req.body.id;
+
+        try
+        {
+            const perm = await db('tb_permission_user').select('*').where('fk_user_id = ' + user_id);
+            return res.status(200).json(perm);
+        }catch(error)
+        {
+            console.log(error);
+        }
+
+    },
+
+    //Cria uma nova Permissao
+    async CreatePermissions(req:Request, res:Response)
+    {
+        const data = {
+            description: req.body.description
+        }
+        try
+        {
+            await db('tb_permissions').insert(data);
+
+            return res.send("Deu certo a criacao da permissao");
+        }catch(error)
+        {
+            return res.send("Erro ao criar a permissao");
+        }
+    },  
+
+    //Associa uma permissao a um usuario
+    async AddPermission(req:Request, res:Response)
+    {
+        const data = {
+            fk_user_id: req.body.id,
+            fk_permission_id: req.body.id
+        }
+
+        try
+        {
+            console.log(data);
+            await db('tb_permission_user').insert(data);
+            return res.send("Criado com sucesso");
+
+        }catch(error)
+        {
+            return res.send("Erro");
+        }
+    },
+
+    async IndexPermissions(req:Request, res:Response)
+    {
+        try
+        {
+            const result = await db('tb_permissions').select("*");
+            console.log(result);
+            return res.status(200).json(result);
+        }catch(error)
+        {
+            return res.send("Erro");
+        }
+    }
 
 }
