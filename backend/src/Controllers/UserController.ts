@@ -1,5 +1,4 @@
 import {Request,Response} from 'express';
-import * as yup from 'yup'
 import db from '../Database/connection';
 
 export default {
@@ -13,6 +12,23 @@ export default {
         }catch(error)
         {
             console.log(error)
+        }
+    },
+
+    async Update_password(req: Request, res:Response)
+    {
+        const {id, new_pass} = req.body;
+        try{
+            
+
+            console.log(`${id} ${new_pass}`)
+
+            await db('tb_user').update('user_password',new_pass).where('user_id',id);
+            return res.status(200).json({id, new_pass});
+        }catch(error)
+        {
+            console.log(error)
+            return res.status(400).json({id, new_pass});
         }
     },
 
@@ -38,18 +54,7 @@ export default {
             securitykey:"0000",
             description:description
         }
-        /*const schema = yup.object().shape({
-            username: yup.string().required(),
-            user_password: yup.string().required(),
-            user_email:yup.string().required(),
-            securitykey:yup.string().required().min(4),
-            description:yup.string().required(),
-        })
 
-        await schema.validate(data,{
-            abortEarly:false
-        })
-        */
         try{      
             await db('tb_user').insert(data);
             //trigger de cadastro

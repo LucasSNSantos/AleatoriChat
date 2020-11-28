@@ -7,6 +7,7 @@ const routes = Router();
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
 routes.post('/users',UserController.create)
+routes.post('/redeempssd',UserController.Update_password)
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 
 
