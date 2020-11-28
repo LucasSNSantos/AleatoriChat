@@ -3,7 +3,19 @@ import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
 import react_logo from '../logo.svg'
+import api from '../api/api'
 import Navbar from '../Components/NavBar'
+import User from '../../../../backend/src/Models/Usuario'
+/*import useAxios from '../hooks/useAxios'
+
+interface Usuario{
+    username:string;
+    user_password:string;
+    user_email:string;
+    user_id:number;
+    securityKey:string;
+    description:string;
+}*/
 
 function Login(){
 
@@ -19,12 +31,12 @@ function Login(){
                 </form>
                 <form className="pass_auth">
                     <p>Password:</p>
-                    <input id="pass_" className="pass_input"></input>
+                    <input id="pass_" type="password" className="pass_input"></input>
                 </form>
                 <Link to="/Register">
-                        <a className="register">
-                               Sign-Up!
-                        </a>
+                    <a className="register">
+                        Sign-Up!
+                    </a>
                 </Link>
                 <a className="btn_go" role="button" onClick={Validate_Login}> 
                     Sign In!
@@ -43,8 +55,16 @@ function Login(){
                     username:username.value,
                     user_password:user_password.value,
                 }
-                //Validação
-                window.location.pathname = "/MainPage"
+                
+                const user = await api.get('users');            
+                const users = user.data as Array<User>;
+                
+                const userFound = users.find(users => users.username === data.username) as User; 
+                
+                if(user_password.value !== userFound.user_password)
+                    throw Object.assign(new Error( "Senha ou Usuário inválidos."),{code:400});
+
+                window.location.pathname = "MainPage"
             }else 
                 throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});
            

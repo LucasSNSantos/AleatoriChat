@@ -1,5 +1,4 @@
 import {Request,Response} from 'express';
-import * as yup from 'yup'
 import db from '../Database/connection';
 
 export default {
