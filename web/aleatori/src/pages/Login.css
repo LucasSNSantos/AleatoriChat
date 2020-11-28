@@ -104,8 +104,33 @@ body,input,button,textarea{
     padding-right: 5px;
 }
 
+#loginho
+{
+    position: relative;
+    margin-top: -55px;
+}
 
 #landing-page .main a:hover{
     background-color: skyblue;
 }
 
+.frg-pass a
+{
+    position: relative;
+    cursor: pointer;
+    background: #30394d;
+    height: 35px;
+    width: 160px;
+    text-align: center;
+    padding: 6px;
+    font-size: medium;
+
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-top: 50px;
+}
+a:-webkit-any-link {
+    transition: 0.5s;
+    cursor: pointer;
+    text-decoration: none;
+}

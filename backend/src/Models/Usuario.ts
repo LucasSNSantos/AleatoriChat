@@ -5,7 +5,7 @@ class Usuario
     user_password:string;
     user_email:string;
     user_id:number;
-    securityKey:string;
+    securitykey:string;
     description:string;
 }
 

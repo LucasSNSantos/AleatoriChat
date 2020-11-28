@@ -15,6 +15,23 @@ export default {
         }
     },
 
+    async Update_password(req: Request, res:Response)
+    {
+        const {id, new_pass} = req.body;
+        try{
+            
+
+            console.log(`${id} ${new_pass}`)
+
+            await db('tb_user').update('user_password',new_pass).where('user_id',id);
+            return res.status(200).json({id, new_pass});
+        }catch(error)
+        {
+            console.log(error)
+            return res.status(400).json({id, new_pass});
+        }
+    },
+
     async index(req: Request, res:Response){
             const { id } = req.params;
 

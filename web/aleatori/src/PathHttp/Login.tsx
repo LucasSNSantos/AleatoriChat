@@ -24,7 +24,7 @@ function Login(){
             
             <div className="main">
                 <Navbar/>
-                <img src={react_logo} width="50" height="50" alt="LOGINHO"/>
+                <img src={react_logo} width="50" height="50" alt="LOGINHO" id="loginho"/>
                 <form className="user_auth">
                     <p>User: </p>
                     <input id="username_" className="user_input"></input>
@@ -33,6 +33,13 @@ function Login(){
                     <p>Password:</p>
                     <input id="pass_" type="password" className="pass_input"></input>
                 </form>
+                <div className="frg-pass">
+                    <Link to="/RedeemPasswd">
+                        <p className="frg-password">
+                            Forgot your password?
+                        </p>
+                    </Link>
+                </div>
                 <Link to="/Register">
                     <a className="register">
                         Sign-Up!
