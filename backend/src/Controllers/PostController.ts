@@ -12,10 +12,6 @@ export default {
             fk_chat_user:req.body.fk_chat_user //FK do usuario com o chat
         }
 
-        try 
-        {
-            await db('tb_')
-        }
         
     }
 

@@ -7,7 +7,7 @@ const routes = Router();
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
 routes.post('/users',UserController.create)
-routes.get('/Permissions/:id', UserController.UserPermissions);
+routes.get('/Permissions/:user_id', UserController.UserPermissions);
 routes.get('/Permissions', UserController.IndexPermissions);
 routes.post('/Permissions', UserController.CreatePermissions);
 routes.post('/Permissions/user', UserController.AddPermission);

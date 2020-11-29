@@ -54,11 +54,14 @@ export default {
     //Mostra *TODAS* as permissoes do usuario
     async UserPermissions(req:Request, res: Response)
     {
-        const user_id = req.body.id;
-
+        const {user_id} = req.params;
+        console.log(req.params);
         try
         {
-            const perm = await db('tb_permission_user').select('*').where('fk_user_id = ' + user_id);
+            const perm = await db('tb_user as u').select("user_id","username","p.description").from('tb_user as u')
+            .rightJoin('tb_permission_user as pu', 'pu.fk_user_id', 'u.user_id')
+            .rightJoin('tb_permissions as p', 'p.id_permission', 'pu.fk_permission_id').where('user_id', user_id);
+            
             return res.status(200).json(perm);
         }catch(error)
         {
@@ -88,8 +91,8 @@ export default {
     async AddPermission(req:Request, res:Response)
     {
         const data = {
-            fk_user_id: req.body.id,
-            fk_permission_id: req.body.id
+            fk_user_id: req.body.user_id,
+            fk_permission_id: req.body.permission_id
         }
 
         try
