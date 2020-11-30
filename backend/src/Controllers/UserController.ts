@@ -1,13 +1,12 @@
 import {Request,Response} from 'express';
 import db from '../Database/connection';
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 export default {
 
     async Show(req:Request, res:Response) 
     {
         const user = await db('tb_user').select('*');
-        //console.log(user);
         return res.status(200).json(user);
     },
 
@@ -49,17 +48,16 @@ export default {
         try{      
             await db('tb_user').insert(data);
             //trigger de cadastro
-        
             if(await db('tb_user').select('username').where('username',data.username)){
                 
                 //Defining mailer
-                let transporter = nodemailer.createTransport({
+                const transporter = nodemailer.createTransport({
                     host: "smtp.gmail.com",
                     port: 587,
                     secure: false, // true for 465, false for other ports
                     auth: {
-                      user: "a", // Sender Email address
-                      pass: "b", // Sender Email password
+                      user: "noreply.aleatorichat@gmail.com", // Sender Email address
+                      pass: "Ale@torius912Chat", // Sender Email password
                     },
                     tls: {
                         // Fix for rejection because of localhost
@@ -67,15 +65,15 @@ export default {
                       }
                     
                   });
-                
                   // Send mail (provavelmente rolava fzr uma classe pra deixar bonito but it's life)
-                  let info = await transporter.sendMail({
-                    from: `"AleatoriChat " <COLOCAR EMAIL DO ALEATORI AQUI>`, // Render address
+                  var info = await transporter.sendMail({
+                    from: `"AleatoriChat" <noreply.aleatorichat@gmail.com>`, // Render address
                     to: `${data.user_email}`, // Receivers
-                    subject: "Hello ✔", // Title
+                    subject: "Hello new AleatoriUser! ✔", // Title
                     text: "Hello world?", // Plaint text email
                     html: "<b>Hello world?</b>", // html for styling the email
                   });
+                  console.log(`${info}\n PASSOU`);
 
                 return response.status(201).send('Você foi cadastrado com sucesso. Bem vindo ao AleatoriChat!.');            
             }
