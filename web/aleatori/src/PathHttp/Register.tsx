@@ -61,11 +61,11 @@ export default function Registro()
                 }
                 await api.post('users',data).catch(function (erro){
                     if(erro.response){
-                        alert(erro.response.data)
+                        throw Object.assign(new Error( erro.response.data),{code:400});
                     }
                 });
-                await alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`)
-                window.location.pathname = "/login"
+                alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
+                window.location.pathname = "/login";
             }else 
                 throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});
            
