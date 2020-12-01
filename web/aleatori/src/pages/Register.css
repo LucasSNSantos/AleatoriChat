@@ -5,21 +5,8 @@ form {
     align-items: center;
 }
 
-/* form div:first-child{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-} */
 body{
     background: #1a1b1d;
-}
-.Register-Aleatori{
-    background: linear-gradient(to bottom, #25989c , #791cc5 205%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .Register-Aleatori-Box{
@@ -39,53 +26,12 @@ body{
     overflow: hidden;
 }
 
-#Register-Aleatori-Box-Header span:nth-child(1)
-{
-    position: absolute;    
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right,#25e0e0,#d504ff);
-    animation: animate1 2s linear infinite;
-}
-#Register-Aleatori-Box-Header span:nth-child(2)
-{
-    position: absolute;    
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to left,#25e0e0,#d504ff);
-    animation: animate2 2s linear infinite;
-}
-@keyframes animate1
-{
-    0%{
-        transform: translateX(-100%);
-    }
-    100%{
-        transform: translateX(100%);
-    }
-    
-} 
-@keyframes animate2
-{
-    0%{
-        transform: translateX(100%);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
-    
-}
-
 #Register-Aleatori-Box-input{
     font-size: calc(18px);
     padding: 12px 10px;
 }
 
-.Register-Aleatori-Box input[type = 'Username'], .Login-Aleatori-Box input[type = 'Password']{
+.Register-Aleatori-Box input[type = 'Username']{
     font-size: 18px;
     height: 40px;
     display: flex;
@@ -99,20 +45,6 @@ body{
     text-align: left;
     margin-left: 10px;
 }
-#Register-Aleatori-Box-forget-passwd{
-    color: #4cd8dd;
-    text-align: center;
-}
-#Register-Aleatori-Box-login_submit{
-    color: #4cd8dd;
-    text-align: center;
-    background: #3a3f49;
-    width: 120px;
-    text-decoration: none;
-    height: 35px;
-    border-radius: 5px;
-}
-
 
 .register-button{
     margin-top: 2rem;
