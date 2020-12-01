@@ -135,6 +135,12 @@ export default {
         {
             return res.send("Erro");
         }
+    },
+
+    async teste(req:Request, res:Response)
+    {
+        const resposta = await db('tb_chat_sala').select('*');
+
     }
 
 }

@@ -1,6 +1,9 @@
 import {Router} from 'express';
 import UserController from './Controllers/UserController';
 import TagController from './Controllers/TagController';
+import ChatController from './Controllers/ChatController';
+import PostController from './Controllers/PostController';
+
 const routes = Router();
 
 //Rotas do usuario
@@ -12,7 +15,10 @@ routes.get('/Permissions', UserController.IndexPermissions);
 routes.post('/Permissions', UserController.CreatePermissions);
 routes.post('/Permissions/user', UserController.AddPermission);
 routes.post('/redeempssd',UserController.Update_password)
-routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
+
+
+//chats
+routes.get('/Chats', ChatController.Index);
 
 
 //rotas da Tag

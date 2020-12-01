@@ -3,7 +3,7 @@ import db from '../Database/connection';
 
 
 export default {
-    async ChatIndex(req:Request, res:Response)
+    async Index(req:Request, res:Response)
     {
         try
         {
@@ -14,8 +14,7 @@ export default {
         {
             console.log(error);
         }
-
-
+        
     }
 
 
