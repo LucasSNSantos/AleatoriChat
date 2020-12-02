@@ -5,8 +5,6 @@ import validate from './authorization/auth'
 import authController from './Controllers/authController';
 const routes = Router();
 
-
-
 //rota de login
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 routes.get('/login',authController.createHash)

@@ -3,7 +3,7 @@ import routes from './routes';
 import 'express-async-errors';
 import './Database/connection';
 import cors from 'cors';
-import {Server,Socket} from 'socket.io';
+import {Server,Socket} from 'Socket.io';
 import {createServer} from 'http';
 import userController from './socketUtils/userController';
 

@@ -20,6 +20,9 @@ function page(){
                 <footer>
                     <button></button>
                 </footer>
+                <div>
+                    <input id="chat_aux" className="chat_feed" placeholder="Type here:"/>
+                </div>
             </div>
         </div>
     
