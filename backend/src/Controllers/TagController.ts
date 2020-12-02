@@ -1,12 +1,10 @@
 import {Request,Response} from 'express';
 import db from '../Database/connection';
 
-
-export default {
-
+class TagController 
+{
     async Show(req:Request, res:Response) 
     {
-
         try
         {
             const tags = await db('tb_tags').select('*');
@@ -15,7 +13,7 @@ export default {
         {
             console.log("Deu erro");
         }
-    },
+    }
 
     async CreateTags(req:Request, res:Response)
     {
@@ -32,5 +30,8 @@ export default {
             console.log("Error");
         }
     }
-
 }
+
+
+
+export default new TagController();

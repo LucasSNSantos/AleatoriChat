@@ -7,9 +7,8 @@ export default {
     {
         try
         {
-           // const response = await db('tb_chat_sala').select('*');
-        
-            return res.status(200).json({Message:"Oi eu sou o Puck"});
+            const response = await db('tb_chat_sala').select('*');
+            return res.status(200).json(response);
         }catch(error)
         {
             console.log(error);

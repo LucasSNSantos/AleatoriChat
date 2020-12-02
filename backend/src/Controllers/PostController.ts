@@ -2,9 +2,8 @@ import {Request,Response} from 'express';
 import db from '../Database/connection';
 
 
-
-export default {
-
+class PostController
+{
     async CreatePost(req:Request, res:Response) {
         const data = {
             censorship:req.body.censorship, //censura do chat
@@ -15,7 +14,7 @@ export default {
         
     }
 
-
-
-
 }
+
+
+export default new PostController(); 

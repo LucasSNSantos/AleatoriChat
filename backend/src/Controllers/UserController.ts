@@ -2,13 +2,14 @@ import {Request,Response} from 'express';
 import db from '../Database/connection';
 import nodemailer from "nodemailer";
 
-export default {
-
+class UserController
+{
+    
     async Show(req:Request, res:Response) 
     {
         const user = await db('tb_user').select('*');
         return res.status(200).json(user);
-    },
+    }
 
     async Update_password(req: Request, res:Response)
     {
@@ -25,14 +26,14 @@ export default {
             console.log(error)
             return res.status(400).json({id, new_pass});
         }
-    },
+    }
 
     async index(req: Request, res:Response){
             const { id } = req.params;
 
             const user = await db('tb_user').select('*').where('id',id); 
             return res.status(200).json(user);
-    },
+    }
 
     async create(request: Request, response:Response){
         const { username,user_password,user_email,description} = request.body
@@ -82,7 +83,7 @@ export default {
             return response.status(400).send('Nome ou Email já cadastrados.');
         }
         
-    },
+    }
 
     //Mostra *TODAS* as permissoes do usuario
     async UserPermissions(req:Request, res: Response)
@@ -101,7 +102,7 @@ export default {
             console.log(error);
         }
 
-    },
+    }
 
     //Cria uma nova Permissao
     async CreatePermissions(req:Request, res:Response)
@@ -118,8 +119,7 @@ export default {
         {
             return res.send("Erro ao criar a permissao");
         }
-    },  
-
+    }
     //Associa uma permissao a um usuario
     async AddPermission(req:Request, res:Response)
     {
@@ -138,7 +138,7 @@ export default {
         {
             return res.send("Erro");
         }
-    },
+    }
 
     async IndexPermissions(req:Request, res:Response)
     {
@@ -151,12 +151,9 @@ export default {
         {
             return res.send("Erro");
         }
-    },
-
-    async teste(req:Request, res:Response)
-    {
-        const resposta = await db('tb_chat_sala').select('*');
-
     }
-
 }
+
+
+
+export default new UserController();

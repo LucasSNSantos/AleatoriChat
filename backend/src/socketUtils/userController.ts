@@ -1,8 +1,9 @@
 import db from '../Database/connection'
 import onlineUser from '../Models/onlineUser'
 
-
-export default{
+class UserController
+{
+    
     async joinUser(id,name,chat_id){
         const user:onlineUser = {id:id,name:name,chat_id:chat_id}
         
@@ -13,7 +14,7 @@ export default{
         }
         
         return user;
-    },
+    }
 
     async getUserbyId(id){
 
@@ -23,7 +24,7 @@ export default{
         if(!user) return null;
 
         return user;
-    },
+    }
 
     async deleteUserbyId (id) {
         try{
@@ -35,3 +36,5 @@ export default{
         return true
     }
 }
+
+export default new UserController();

@@ -1,6 +1,4 @@
-import * as config from '../../knexfile';
 import knex from 'knex';
+import config from '../../knexfile';
 
-
-
-export default knex(config.default.development);
+export default knex(config.development);

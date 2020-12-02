@@ -1,5 +1,5 @@
 // Update with your config settings.
-require('ts-node/register');
+//require('ts-node/register');
 
 export default  {
 
