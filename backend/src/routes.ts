@@ -1,7 +1,7 @@
 import {Router} from 'express';
 import UserController from './Controllers/UserController';
 import TagController from './Controllers/TagController';
-import ChatController from './Controllers/ChatController';
+//import ChatController from './Controllers/ChatController';
 import PostController from './Controllers/PostController';
 
 const routes = Router();
@@ -18,7 +18,7 @@ routes.post('/redeempssd',UserController.Update_password)
 
 
 //chats
-routes.get('/Chats', ChatController.Index);
+//routes.get('/Chats', ChatController.Index);
 
 
 //rotas da Tag
