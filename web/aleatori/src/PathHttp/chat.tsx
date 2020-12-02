@@ -1,16 +1,27 @@
 import React from 'react'
+import '../pages/global.css'
+import '../pages/chat.css'
+import logo from '../aleatori.png'
 import IO from "socket.io-client"
-const ENDPOINT = 'http://127.0.0.1:8080'
+import { log } from 'console'
+const ENDPOINT = 'http://localhost:4444'
 
 function page(){
-    const socket = IO(ENDPOINT)
+    
+    const socket = IO(ENDPOINT,{autoConnect:true})
     
     return(
         <div id="content_wrapper">
-            <header></header>
-            <div className="chat_messages"></div>
-            <button></button>
-           
+            <div id="chat">
+                <header>
+                    <img src={logo} alt="logo" width={50} height={50}/>
+                    <h1>AleatoriChat</h1>
+                </header>
+                <div className="chat_messages"></div>
+                <footer>
+                    <button></button>
+                </footer>
+            </div>
         </div>
     
     )

@@ -1,0 +1,57 @@
+#content_wrapper{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #495369;
+}
+#chat{
+    width: 100%;
+    max-width: 800px;
+    
+    height: 100%;
+    max-height: 800px;
+
+    border-radius: 7px;
+
+    background: #181c24;
+}
+#chat header{
+    position: relative;
+    top: 0;
+
+    width: 100%;
+    height:100px;
+
+    border-radius: 7px;
+    background: #587ac3;
+}
+#chat header img{
+    position: relative;
+    top:25px;
+    bottom: 25px;
+    left: 0;
+
+
+}
+
+#chat header h1{
+    position: relative;
+    top:25px;
+    bottom: 25px;
+    right: 0;
+
+    font-size: 18px;
+}
+#chat .chat_messages{
+    background: #FFF;
+
+    width: 100%;
+    height:100%;
+
+}
+
+
