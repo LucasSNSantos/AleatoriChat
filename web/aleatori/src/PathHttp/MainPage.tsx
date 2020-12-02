@@ -18,9 +18,9 @@ function MainPage(){
                 </div>
                <div className="Main-Page-User">
                     <header className="user_panel">
-                        <p className="vPerfil">
+                        <h4 className="vPerfil">
                             User
-                        </p>
+                        </h4>
                         <p>
                             Description
                         </p>

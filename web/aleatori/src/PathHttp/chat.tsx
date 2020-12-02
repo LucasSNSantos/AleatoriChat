@@ -3,7 +3,6 @@ import '../pages/global.css'
 import '../pages/chat.css'
 import logo from '../aleatori.png'
 import IO from "socket.io-client"
-import { log } from 'console'
 const ENDPOINT = 'http://localhost:4444'
 
 function page(){

@@ -13,9 +13,10 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-const server = createServer(app)
-const io = new Server(server,{cors:{origin:'*'}})
-const user_bot = 'Aleatori Bot'
+const server = createServer(app);
+
+const io = new Server(server,{cors:{origin:'*'}});
+const user_bot = 'Aleatori Bot';
 
 io.on('connection',async (socket:Socket) =>{
 
