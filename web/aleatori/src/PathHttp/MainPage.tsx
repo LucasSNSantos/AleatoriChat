@@ -2,6 +2,7 @@ import React from 'react';
 import '../pages/MainPage.css';
 import NavBar from '../Components/NavBar';
 import Tag from '../Components/Tags';
+import Room from '../Components/Box_Sala';
 
 function MainPage(){
     return(
@@ -28,7 +29,12 @@ function MainPage(){
                </div>
                 <div className="Main-Page-Chat">
                     <aside className="user_chat">
-                        chats
+                        <Room SalaName="Evangelion room you can (not) enter" Tags={["Anime","Evangelion"]}></Room>
+                        <Room SalaName="CAts" Tags={["Pets","Cats"]}></Room>
+                        <Room SalaName="MSP430" Tags={["Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits"]}></Room>
+                        <Room SalaName="JJBA" Tags={["Anime","JOJO"]}></Room>
+                        <Room SalaName="Metal Gear Solid V" Tags={["Game"]}></Room>
+                        
                     </aside>                
                 </div>                
             </div>

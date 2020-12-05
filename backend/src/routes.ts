@@ -7,14 +7,14 @@ const routes = Router();
 
 //rota de login
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
-routes.get('/login',authController.createHash)
+routes.post('/login',authController.createHash)
 
 //Rotas do usuario
-routes.use(validate)
+//routes.use(validate) => TOKEN ISN'T WORKING
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
-routes.post('/users',UserController.create)
-routes.post('/redeempssd',UserController.Update_password)
+routes.post('/users',UserController.create);
+routes.post('/redeempssd',UserController.Update_password);
 
 //rotas da Tag
 routes.get('/Tags', TagController.Show);

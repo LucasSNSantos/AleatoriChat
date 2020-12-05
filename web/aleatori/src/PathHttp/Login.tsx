@@ -2,10 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
-import react_logo from '../logo.svg'
+import react_logo from '../aleatori.png'
 import api from '../api/api'
 import Navbar from '../Components/NavBar'
 import User from '../../../../backend/src/Models/Usuario'
+import { AxiosResponse } from 'axios'
 /*import useAxios from '../hooks/useAxios'
 
 interface Usuario{
@@ -53,6 +54,7 @@ function Login(){
     );
 
     async function Validate_Login(){
+       
         try{
             const username = document.querySelector('input[id="username_"]') as HTMLInputElement;
             const user_password = document.querySelector('input[id="pass_"]') as HTMLInputElement;
@@ -62,10 +64,17 @@ function Login(){
                     username:username.value,
                     user_password:user_password.value,
                 }
-                
+                const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
+                    if(erro.response){
+                        throw Object.assign(new Error( erro.response.data),{code:400});
+                    }
+                });
+                const tkn = token as AxiosResponse;
+                 alert(tkn.data.hash);
+
                 const user = await api.get('users');            
                 const users = user.data as Array<User>;
-                
+
                 const userFound = users.find(users => users.username === data.username) as User; 
                 
                 if(user_password.value !== userFound.user_password)

@@ -12,6 +12,6 @@ export default {
         const id = results.forEach(n => n.id)
         const encoded = jwt.sign({id},'kureijichesu',{expiresIn:'1d'})
 
-        res.status(201).json({hash:encoded})
+        return res.status(201).json({hash:encoded})
     }
 }

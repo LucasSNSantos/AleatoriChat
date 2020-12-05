@@ -10,7 +10,7 @@
 
 .Main-Page-panel{
     background: linear-gradient(to left ,#0c524f,#1aacb1);
-    height: 1000vh;
+    height: 100vh auto;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,9 @@
     background: #2e2f33;
     display: flex;
     width: 660px;
-    height: 500px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    min-height: 500px auto;
     flex-direction: column;
     align-items: center;
     position: relative;
