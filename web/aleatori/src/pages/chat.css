@@ -38,6 +38,24 @@
 
 }
 
+#chat_aux{
+    font-size: calc(18px);
+    padding: 12px 10px;
+    font-size: 18px;
+    height: 40px;
+    display: flex;
+    border: none;
+    flex-direction: column;
+    top: 580px;
+    font: bold 600;
+    font-family: Arial;
+    background: #3a3f49;
+    outline: #25989c unset;
+    width: 61vw;
+    text-align: left;
+    position: absolute;
+}
+
 #chat header h1{
     position: relative;
     top:25px;

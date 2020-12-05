@@ -11,7 +11,6 @@ function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Login}/>
-                <Route path="/login" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>
                 <Route path="/mainpage" exact component={MainPage}/>
                 <Route path="/createAccount" exact component={Register}/>

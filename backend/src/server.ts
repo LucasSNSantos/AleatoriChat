@@ -3,7 +3,7 @@ import routes from './routes';
 import 'express-async-errors';
 import './Database/connection';
 import cors from 'cors';
-import {Server,Socket} from 'socket.io';
+import {Server,Socket} from 'Socket.io';
 import {createServer} from 'http';
 import userController from './socketUtils/userController';
 
@@ -13,9 +13,10 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-const server = createServer(app)
-const io = new Server(server,{cors:{origin:'*'}})
-const user_bot = 'Aleatori Bot'
+const server = createServer(app);
+
+const io = new Server(server,{cors:{origin:'*'}});
+const user_bot = 'Aleatori Bot';
 
 io.on('connection',async (socket:Socket) =>{
 

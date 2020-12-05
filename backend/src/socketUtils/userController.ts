@@ -9,7 +9,7 @@ export default{
         try{
             await db('onlineUsers').insert(user)
         }catch(e){
-            return null    
+            console.log(e);  
         }
         
         return user;
@@ -29,7 +29,7 @@ export default{
         try{
             await db('onlineUsers').where('id',id).delete()
         }catch(e){
-            return null
+            console.log(e);  
         }
 
         return true

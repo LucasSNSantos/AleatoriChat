@@ -2,16 +2,13 @@ import {Request,Response} from 'express';
 import db from '../Database/connection';
 import nodemailer from "nodemailer";
 
-
 export default {
 
     async Show(req:Request, res:Response) 
     {
-        const [{username,description}]:any = await db('tb_user').select('*');
-        const userN = username;
-        const descrip = description;
-
-        return res.status(200).json({userN,descrip});
+        const users = await db('tb_user').select('*');
+       
+        return res.status(200).json(users);
     },
 
     async Update_password(req: Request, res:Response)

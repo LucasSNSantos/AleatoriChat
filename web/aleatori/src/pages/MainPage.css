@@ -9,8 +9,8 @@
 }
 
 .Main-Page-panel{
-    background: #495369;
-    height: 1000vh;
+    background: linear-gradient(to left ,#0c524f,#1aacb1);
+    height: 100vh auto;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -20,13 +20,13 @@
     background: #2e2f33;
     position: relative;
     height: 120px;
-    width: 600px;
+    width: 680px;
     align-items: center;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     top: 20px;
-    right: 200px;
+    right: -200px;
 }
 .user_tags{
     margin-top: 10px;
@@ -46,16 +46,18 @@
     justify-content: center;
     position: relative;
     top: -75px;
-    left: 400px;
+    left: -400px;
 }
 .Main-Page-Chat{
     background: #2e2f33;
     display: flex;
-    width: 580px;
-    height: 500px;
+    width: 660px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    min-height: 500px auto;
     flex-direction: column;
     align-items: center;
     position: relative;
-    right: 200px;
-    top: -110px;
+    right: -200px;
+    top: -120px;
 }

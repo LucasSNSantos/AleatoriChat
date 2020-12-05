@@ -3,7 +3,6 @@ import '../pages/global.css'
 import '../pages/chat.css'
 import logo from '../aleatori.png'
 import IO from "socket.io-client"
-import { log } from 'console'
 const ENDPOINT = 'http://localhost:4444'
 
 function page(){
@@ -21,6 +20,9 @@ function page(){
                 <footer>
                     <button></button>
                 </footer>
+                <div>
+                    <input id="chat_aux" className="chat_feed" placeholder="Type here:"/>
+                </div>
             </div>
         </div>
     
