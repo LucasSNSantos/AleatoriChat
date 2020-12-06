@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ErrorInfo } from 'react'
 import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
@@ -7,16 +7,7 @@ import api from '../api/api'
 import Navbar from '../Components/NavBar'
 import User from '../../../../backend/src/Models/Usuario'
 import { AxiosResponse } from 'axios'
-/*import useAxios from '../hooks/useAxios'
 
-interface Usuario{
-    username:string;
-    user_password:string;
-    user_email:string;
-    user_id:number;
-    securityKey:string;
-    description:string;
-}*/
 
 function Login(){
 
@@ -70,11 +61,13 @@ function Login(){
                     }
                 });
                 const tkn = token as AxiosResponse;
-                 alert(tkn.data.hash);
-
-                const user = await api.get('users');            
+                const user = await api.get('users',{
+                    headers:{
+                        'token': tkn.data.hash
+                    }
+                });            
                 const users = user.data as Array<User>;
-
+                
                 const userFound = users.find(users => users.username === data.username) as User; 
                 
                 if(user_password.value !== userFound.user_password)
