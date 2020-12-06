@@ -7,6 +7,7 @@ const routes = Router();
 
 //rota de login
 routes.post('/login',authController.createHash)
+
 routes.post('/users',UserController.create);
 
 //Rotas do usuario
