@@ -10,7 +10,7 @@ export default {
         
         const id = results.find(n => n.id)
         const encoded = await jwt.sign({id},'kureijichesu',{expiresIn:'1d'})
-
+        
         return res.status(201).json({hash:encoded})
     }
 }

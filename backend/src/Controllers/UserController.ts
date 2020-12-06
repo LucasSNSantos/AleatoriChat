@@ -5,9 +5,11 @@ import nodemailer from "nodemailer";
 export default {
 
     async Show(req:Request, res:Response) 
-    {
+    {   
         const users = await db('tb_user').select('*');
-       
+        
+        if(!users) return res.sendStatus(404)
+
         return res.status(200).json(users);
     },
 
@@ -31,7 +33,12 @@ export default {
     async index(req: Request, res:Response){
             const { id } = req.params;
 
-            const user = await db('tb_user').select('*').where('id',id); 
+            const user = await db('tb_user').select('*').where('user_id',id).catch(e => {
+                return res.sendStatus(500)
+            }); 
+
+            if(!user) return res.sendStatus(404);
+
             return res.status(200).json(user);
     },
 
