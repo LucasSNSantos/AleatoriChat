@@ -6,14 +6,15 @@ import authController from './Controllers/authController';
 const routes = Router();
 
 //rota de login
-routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 routes.post('/login',authController.createHash)
 
+routes.post('/users',UserController.create);
+
 //Rotas do usuario
-routes.use(validate) //=> TOKEN ISN'T WORKING
+routes.use(validate) 
+routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
-routes.post('/users',UserController.create);
 routes.post('/redeempssd',UserController.Update_password);
 
 //rotas da Tag
