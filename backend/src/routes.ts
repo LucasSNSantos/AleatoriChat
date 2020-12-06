@@ -10,7 +10,7 @@ routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao A
 routes.post('/login',authController.createHash)
 
 //Rotas do usuario
-//routes.use(validate) => TOKEN ISN'T WORKING
+routes.use(validate) //=> TOKEN ISN'T WORKING
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
 routes.post('/users',UserController.create);
