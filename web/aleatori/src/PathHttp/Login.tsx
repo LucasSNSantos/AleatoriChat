@@ -8,7 +8,6 @@ import Navbar from '../Components/NavBar'
 import User from '../../../../backend/src/Models/Usuario'
 import { AxiosResponse } from 'axios'
 
-
 function Login(){
 
     return (
@@ -55,12 +54,14 @@ function Login(){
                     username:username.value,
                     user_password:user_password.value,
                 }
+                
                 const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
                     if(erro.response){
                         throw Object.assign(new Error( erro.response.data),{code:400});
                     }
                 });
                 const tkn = token as AxiosResponse;
+                
                 const user = await api.get('users',{
                     headers:{
                         'token': tkn.data.hash
