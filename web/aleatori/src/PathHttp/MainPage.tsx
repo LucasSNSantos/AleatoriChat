@@ -5,12 +5,29 @@ import Tag from '../Components/Tags';
 import Room from '../Components/Box_Sala';
 
 function MainPage(){
+    function Search_tag()
+    {
+        const input_S = document.querySelector('input[id="Search_tag"]') as HTMLInputElement;
+        const tag_s = document.querySelector('aside[id="user_tags"]') as HTMLElement;
+        
+        input_S.addEventListener("keyup",function(event){
+            if(event.keyCode === 13)
+            {
+                for(let i=0;i<tag_s.children.length;i++)
+                {
+                    var aux = tag_s.children.item(i);
+                    alert(aux?.innerHTML);
+                }
+            }
+        })
+    }
     return(
         <div className="Main-Page">
             <NavBar/>
             <div className="Main-Page-panel">
                 <div className="Main-Page-Tags">
-                    <aside className="user_tags">
+                    <input className="Search_tag" id="Search_tag" onKeyUp={Search_tag} placeholder="Search a tag here:"/>
+                    <aside className="user_tags" id="user_tags">                        
                         <Tag text="Pets"></Tag>
                         <Tag text="Anime"></Tag>
                         <Tag text="Circuits"></Tag>
@@ -40,6 +57,7 @@ function MainPage(){
             </div>
         </div>
     );
+    
 }
 
 export default MainPage;

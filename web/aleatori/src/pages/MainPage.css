@@ -27,13 +27,31 @@
     flex-direction: column;
     top: 20px;
     right: -200px;
+    overflow: hidden;
 }
 .user_tags{
-    margin-top: 10px;
-    height: 80px;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    line-height: 1.5;
     flex-direction: row;
+}
+.user_tags ::-webkit-scrollbar-track
+{
+    background: #0c524f;
+}
+.Search_tag
+{
+    background: #0d130f;
+    padding: 5px 5px;
+    min-width: 700px;
+    margin-left: 20px;
+    
+    color: #ffffff;
+    border: none;
 }
 .Main-Page-User{
     background: #2e2f33;
