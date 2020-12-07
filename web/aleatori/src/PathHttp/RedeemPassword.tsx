@@ -3,6 +3,7 @@ import Navbar from '../Components/NavBar';
 import api from '../api/api';
 import '../pages/RedeemPassword.css';
 import User from '../../../../backend/src/Models/Usuario'
+import { AxiosResponse } from 'axios';
 
 export default function RedeemPassword()
 {
@@ -59,9 +60,20 @@ export default function RedeemPassword()
                     securityKey: user_key.value,
                     user_email: user_email.value,
                 }
-               
+                
+                const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
+                    if(erro.response){
+                        throw Object.assign(new Error( erro.response.data),{code:400});
+                    }
+                });
+                const tkn = token as AxiosResponse;
+                
                 //confirmar
-                const user = await api.get('users');            
+                const user = await api.get('users',{
+                    headers:{
+                        'token': tkn.data.hash
+                    }
+                });            
                 const users = user.data as Array<User>;
                 
                 const userFound = users.find(users => users.user_email === data.user_email) as User;
