@@ -17,7 +17,6 @@ export default {
     {
         const {id, new_pass} = req.body;
         try{
-            
             console.log(`${id} ${new_pass}`)
 
             await db('tb_user').update('user_password',new_pass).where('user_id',id);
