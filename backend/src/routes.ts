@@ -20,6 +20,7 @@ routes.post('/redeempssd',UserController.Update_password)
 
 //chats
 routes.get('/Chats', ChatController.Index);
+routes.post('/Chats/Create', ChatController.CreateChat);
 
 //rotas da Tag
 routes.get('/Tags', TagController.Show);
