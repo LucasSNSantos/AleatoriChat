@@ -7,6 +7,7 @@ class Usuario
     user_id:number;
     securitykey:string;
     description:string;
+    afinity:string;
 }
 
 export default Usuario;

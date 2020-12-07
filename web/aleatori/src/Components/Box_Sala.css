@@ -1,0 +1,28 @@
+.Box_sala_table
+{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    position: relative;
+    min-width: 700px;
+    margin-left: -10px;
+    line-height: 1.5;
+    border-bottom: solid;
+    grid-row: auto;
+    border-top: solid;
+    border-width: 1px;
+    border-color: #4d4e50;
+}
+.Sala_name
+{
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium';
+    margin-right: 10px;
+    color: azure;
+}
+.aux_element
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

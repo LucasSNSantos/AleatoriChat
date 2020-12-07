@@ -59,11 +59,13 @@ export default function Registro()
                     user_email:user_email.value,
                     description:description.value
                 }
+
                 await api.post('users',data).catch(function (erro){
                     if(erro.response){
                         throw Object.assign(new Error( erro.response.data),{code:400});
                     }
                 });
+                
                 alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
                 window.location.pathname = "/login";
             }else 

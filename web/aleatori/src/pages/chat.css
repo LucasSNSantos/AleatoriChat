@@ -11,6 +11,7 @@
 #chat{
     width: 100%;
     max-width: 800px;
+    position: absolute;
     
     height: 100%;
     max-height: 800px;
@@ -26,23 +27,41 @@
     width: 100%;
     height:100px;
 
-    border-radius: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     background: #587ac3;
 }
 #chat header img{
     position: relative;
-    top:25px;
+    top:15px;
     bottom: 25px;
     left: 0;
+}
 
-
+#chat_aux{
+    font-size: calc(18px);
+    padding: 12px 10px;
+    font-size: 18px;
+    height: 40px;
+    display: flex;
+    border: none;
+    flex-direction: column;
+    top: 0px;
+    font: bold 600;
+    font-family: Arial;
+    background: #ffffff;
+    border-top: solid #181c24 2px;
+    outline: #25989c unset;
+    width: 100%;
+    text-align: left;
+    position: relative;
 }
 
 #chat header h1{
     position: relative;
-    top:25px;
+    top:20px;
     bottom: 25px;
-    right: 0;
+    left: 10px;
 
     font-size: 18px;
 }
@@ -50,8 +69,23 @@
     background: #FFF;
 
     width: 100%;
-    height:100%;
+    height:70%;
 
+}
+.Members
+{
+    position: relative;
+    border-bottom: #a09f9f solid 1px;
+    border-top: #a09f9f solid 1px;
+    width: 300px;
+    min-height: 100px;
+    left: -515px;
+    
+    word-wrap: break-word;
+    padding: 10px;
+    display: flex;
+    
+    flex-direction: column;
 }
 
 

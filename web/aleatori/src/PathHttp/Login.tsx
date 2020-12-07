@@ -1,21 +1,13 @@
-import React from 'react'
+import React, { ErrorInfo } from 'react'
 import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
-import react_logo from '../logo.svg'
+import Aleatori_Logo from '../aleatori.png'
 import api from '../api/api'
 import Navbar from '../Components/NavBar'
 import User from '../../../../backend/src/Models/Usuario'
-/*import useAxios from '../hooks/useAxios'
+import { AxiosResponse } from 'axios'
 
-interface Usuario{
-    username:string;
-    user_password:string;
-    user_email:string;
-    user_id:number;
-    securityKey:string;
-    description:string;
-}*/
 
 function Login(){
 
@@ -24,7 +16,7 @@ function Login(){
             
             <div className="main">
                 <Navbar/>
-                <img src={react_logo} width="50" height="50" alt="LOGINHO" id="loginho"/>
+                <img src= {Aleatori_Logo} width="50" height="50" alt="LOGINHO" id="loginho"/>
                 <form className="user_auth">
                     <p>User: </p>
                     <input id="username_" className="user_input"></input>
@@ -45,14 +37,15 @@ function Login(){
                         Sign-Up!
                     </a>
                 </Link>
-                <a className="btn_go" role="button" onClick={Validate_Login}> 
+                <a className="btn_go" role="button" onClick={validate_login_by_PF}> 
                     Sign In!
                 </a>
             </div>
         </div>
     );
-
+}
     async function Validate_Login(){
+       
         try{
             const username = document.querySelector('input[id="username_"]') as HTMLInputElement;
             const user_password = document.querySelector('input[id="pass_"]') as HTMLInputElement;
@@ -63,7 +56,18 @@ function Login(){
                     user_password:user_password.value,
                 }
                 
-                const user = await api.get('users');            
+                const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
+                    if(erro.response){
+                        throw Object.assign(new Error( erro.response.data),{code:400});
+                    }
+                });
+                const tkn = token as AxiosResponse;
+                
+                const user = await api.get('users',{
+                    headers:{
+                        'token': tkn.data.hash
+                    }
+                });            
                 const users = user.data as Array<User>;
                 
                 const userFound = users.find(users => users.username === data.username) as User; 
@@ -80,8 +84,22 @@ function Login(){
         }
 
     }
+
+    async function validate_login_by_PF(){
+        const username = document.querySelector('.user_input') as HTMLInputElement
+        const user_password = document.querySelector('.pass_input') as HTMLInputElement
+
+        const userLogin = {username:username.value,user_password:user_password.value}
+
+        if(userLogin.username == '' || userLogin.user_password == '') alert('Algum campo não foi preenchido!')
+
+        const {data,status}:AxiosResponse | any = await api.post('/login',userLogin)
+        console.log(status)
+        if(status >= 200 && status < 300) window.location.pathname = "MainPage"
+
+    }
    
-}
+
 
 
 export default Login; 
