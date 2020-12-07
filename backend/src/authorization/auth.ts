@@ -7,9 +7,6 @@ async function validate(req:Request,res:Response,next:NextFunction){
 
     if(!token) return next(new http_error.Unauthorized())
 
-
-    console.log(`davi token: ${token}`)
-
         //trocar senha pra .Env.auth_pass (mais seguro)
         jwt.verify(token.toString(),'kureijichesu',(err,payload) =>{
             if(err) return next(new http_error.Unauthorized())

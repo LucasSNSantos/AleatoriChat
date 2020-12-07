@@ -6,7 +6,7 @@ import authController from './Controllers/authController';
 const routes = Router();
 
 //rota de login
-routes.post('/login',authController.createHash)
+routes.post('/login',authController.createHash);
 
 routes.post('/users',UserController.create);
 
@@ -15,11 +15,12 @@ routes.use(validate)
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
-routes.post('/redeempssd',UserController.Update_password);
+routes.put('/users',UserController.Update_password);
 
 //rotas da Tag
 routes.get('/Tags', TagController.Show);
 routes.post('/Tags', TagController.CreateTags);
+
 
 export default routes;
 
