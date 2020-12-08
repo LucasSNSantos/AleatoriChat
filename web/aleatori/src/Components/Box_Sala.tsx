@@ -6,9 +6,10 @@ import { ReactChild } from 'react';
 
 type props = {
     SalaName:string
+    path:string
     Tags:string[]
 }
-function Room({SalaName,Tags}:props)
+function Room({SalaName,Tags,path}:props)
 {
     
     function ParseTag(){
@@ -20,7 +21,10 @@ function Room({SalaName,Tags}:props)
         };
     return(
         <div className="Box_sala_table" id="Box_sala_table">
-            <h2 className="Sala_name">{SalaName}</h2>
+            <a href={path}> 
+                <h2 className="Sala_name">{SalaName}</h2>
+            </a>
+           
             <div className="Tags">
                 {ParseTag()}
             </div>

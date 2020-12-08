@@ -8,7 +8,7 @@ type props = {
 function Tag({text}:props){
     return(
         <div className="Tag-box">
-            <a className="Tag-Text" href="/">
+            <a className="Tag-Text">
                 {text}
             </a>
         </div>
