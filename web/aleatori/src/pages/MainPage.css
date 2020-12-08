@@ -106,6 +106,7 @@
     position: relative;
     display: flex;
     top: -400px;
+    left: -400px;
     flex-direction: column;
 }
 .btns_room_div{
@@ -122,8 +123,7 @@
     width: 150px;
     border: none;
     color: #ffffff;
-    background: #2e2f33;;
-    left: -400px;
+    background: #2e2f33;
     margin-right: 20px;
     transition: 0.5s;
     cursor: pointer;

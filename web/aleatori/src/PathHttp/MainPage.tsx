@@ -76,8 +76,10 @@ function MainPage(){
         //     assessibilidade,
         //     tags na tb tagsxsala, 
         // }
+        // cria tags
+        // bota na tabela associativa
         console.log("a")
-        // await api.post('imguploadUser',data,{
+        // await api.post('Chats',data,{
         //     headers:{
         //         'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDczOTE1NDMsImV4cCI6MTYwNzQ3Nzk0M30.Bdtv_3bChLj0zZkV8sCY-s02_VGKBc5NRlcpIknXVHw'
         //     }
@@ -173,7 +175,7 @@ function MainPage(){
                 </div>               
                <div className="div-rooms-mangr">
                     <div className="btns_room_div">
-                        <button id="aleatori" className="btn_rooms">Aleatori</button>
+                        <button id="aleatori" onClick={()=>Aleatori()} className="btn_rooms">Aleatori</button>
                         <button id="crt_room" onClick={()=>ShowCreate()} className="btn_rooms">Create Room</button>
                     </div>
                     <form id="myForm" className="form-container-crt-room">
@@ -191,6 +193,10 @@ function MainPage(){
             </div>
         </div>
     );
+
+    function Aleatori(){
+        window.location.pathname="/chat"
+    }
     
 }
 
