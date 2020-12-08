@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{ChangeEvent, useContext} from 'react';
 import '../pages/MainPage.css';
 import NavBar from '../Components/NavBar';
 import Tag from '../Components/Tags';

@@ -1702,6 +1702,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.3.tgz#a6e252973214079155f749e8bef99cc80af182fa"
   integrity sha512-8Jduo8wvvwDzEVJCOvS/G6sgilOLvvhn1eMmK3TW8/T217O7u1jdrK6ImKLv80tVryaPSVeKu6sjDEiFjd4/eg==
 
+"@types/nodemailer@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.0.tgz#d8c039be3ed685c4719a026455555be82c124b74"
+  integrity sha512-KY7bFWB0MahRZvVW4CuW83qcCDny59pJJ0MQ5ifvfcjNwPlIT0vW4uARO4u1gtkYnWdhSvURegecY/tzcukJcA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -10160,10 +10167,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-socket.io-client@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-3.0.3.tgz#37890e24fc386e9de34358a1b7c4a2968f5d2630"
-  integrity sha512-kwCJAKb6JMqE9ZYXg78Dgt8rYLSwtJ/g/LJqpb/pOTFRZMSr1cKAsCaisHZ+IBwKHBY7DYOOkjtkHqseY3ZLpw==
+socket.io-client@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-3.0.4.tgz#c0203419a9f71e1360ef92a31301e80260e94bb9"
+  integrity sha512-qMvBuS+W9JIN2mkfAWDCxuIt+jpIKDf8C0604zEqx1JrPaPSS6cN0F3B2GYWC83TqBeVJXW66GFxWV3KD88n0Q==
   dependencies:
     "@types/component-emitter" "^1.2.10"
     backo2 "1.0.2"
