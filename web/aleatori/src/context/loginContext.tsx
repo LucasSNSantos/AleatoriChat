@@ -27,9 +27,10 @@ export function LoginProvider({children}:props){
 
     async function handleLogin(username:string,user_password:string){
         const {data} = await api.post('login',{username,user_password})
-
+        
         setUser(data!.user)
         setToken(data!.hash)
+        
     }
 
     return (

@@ -22,9 +22,9 @@ function Login(){
         if(userLogin.username == '' || userLogin.user_password == ''){ 
             alert('Algum campo não foi preenchido!')
         }else{
-
             await handleLogin(userLogin.username,userLogin.user_password)
-            console.log(user,token)
+            console.log(user, token);
+            //window.location.pathname = "MainPage"
         }
     }
 
@@ -54,7 +54,7 @@ function Login(){
                         Sign-Up!
                     </a>
                 </Link>
-                <a className="btn_go" role="button" onClick={validate_login_by_PF}> 
+                <a className="btn_go" role="button" onClick={()=>validate_login_by_PF()}> 
                     Sign In!
                 </a>
             </div>
