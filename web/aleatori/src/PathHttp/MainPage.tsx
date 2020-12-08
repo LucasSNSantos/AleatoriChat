@@ -6,11 +6,11 @@ import Room from '../Components/Box_Sala';
 import api from '../api/api';
 import TagClass from '../../../../backend/src/Models/tags';
 import { useEffect,useState } from 'react';
-import loginContext from '../context/loginContext'
+import LoginContext from '../context/loginContext'
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
-    const ctx = useContext(loginContext)
+    const ctx = useContext(LoginContext)
     
     useEffect(()=>{
         api.get('tags',{
@@ -28,7 +28,7 @@ function MainPage(){
             setTags(response.data);
         });
     },[])
-    console.log(ctx.user?.username);
+
     //Not efficient at all!
     function Search_tag()
     {
@@ -110,6 +110,7 @@ function MainPage(){
         if(!event.target.files){
             return;
         }
+    
         const data= new FormData();
         const images = Array.from(event.target.files);
         data.append("username",'lhimbo');
@@ -128,7 +129,7 @@ function MainPage(){
             }
         });
     }  
-    
+    console.log(ctx.user?.username)
     return(
         <div className="Main-Page">
             <NavBar/>
@@ -158,10 +159,10 @@ function MainPage(){
                     <header className="user_panel">
                         <img alt="img_profile" onClick={()=>showUpload()} src="https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg"/>
                         <h4 className="vPerfil">
-                            User
+                            {ctx!.user?.username}
                         </h4>
                         <p>
-                            Description
+                            {ctx!.user?.description}
                         </p>
                     </header>
                </div>

@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
 import Aleatori_Logo from '../aleatori.png'
@@ -11,8 +11,9 @@ import loginContext from '../context/loginContext'
 
 
 function Login(){
-    const { handleLogin,token,user } = useContext(loginContext)
-
+    const { handleLogin,token,user} = useContext(loginContext)
+    const history = useHistory()
+    
     async function validate_login_by_PF(){
         const username = document.querySelector('.user_input') as HTMLInputElement
         const user_password = document.querySelector('.pass_input') as HTMLInputElement
@@ -22,9 +23,14 @@ function Login(){
         if(userLogin.username == '' || userLogin.user_password == ''){ 
             alert('Algum campo não foi preenchido!')
         }else{
+            
             await handleLogin(userLogin.username,userLogin.user_password)
-            console.log(user, token);
-            //window.location.pathname = "MainPage"
+            const token = localStorage.getItem('token')
+            
+            if(token != null){ history.push('MainPage') }
+            else{
+                localStorage.removeItem('token')
+            }
         }
     }
 
