@@ -1,20 +1,8 @@
-<<<<<<< HEAD
 import React,{useContext} from 'react';
-=======
-import React, { ChangeEvent } from 'react';
->>>>>>> c79f6e690eb88b073855d7ce28ed82a3912bf35c
 import '../pages/MainPage.css';
 import NavBar from '../Components/NavBar';
 import Tag from '../Components/Tags';
 import Room from '../Components/Box_Sala';
-<<<<<<< HEAD
-import loginContext from '../context/loginContext'
-
-function MainPage(){
-    const {user} = useContext(loginContext)
-
-    console.log(user?.username)
-=======
 import api from '../api/api';
 import TagClass from '../../../../backend/src/Models/tags';
 import { useEffect } from 'react';
@@ -140,7 +128,6 @@ function MainPage(){
         });
     }  
     
->>>>>>> c79f6e690eb88b073855d7ce28ed82a3912bf35c
     return(
         <div className="Main-Page">
             <NavBar/>
@@ -179,20 +166,11 @@ function MainPage(){
                </div>
                <div className="Main-Page-Chat">
                     <aside className="user_chat">
-<<<<<<< HEAD
-                        <Room SalaName="Evangelion" Tags={["Anime","Evangelion"]}></Room>
-                        <Room SalaName="CAts" Tags={["Pets","Cats"]}></Room>
-                        <Room SalaName="MSP430" Tags={["Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits"]}></Room>
-                        <Room SalaName="JJBA" Tags={["Anime","JOJO"]}></Room>
-                        <Room SalaName="Metal Gear Solid V" Tags={["Game"]}></Room>
-                        
-=======
                         <Room SalaName="Evangelion room you can (not) enter" path="/chat" Tags={["Anime","Evangelion"]}></Room>
                         <Room SalaName="CAts" path="/chat" Tags={["Pets","Cats"]}></Room>
                         <Room SalaName="MSP430" path="/chat" Tags={["Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits"]}></Room>
                         <Room SalaName="JJBA" path="/chat" Tags={["Anime","JOJO"]}></Room>
                         <Room SalaName="Metal Gear Solid V" path="/chat" Tags={["Game"]}></Room>
->>>>>>> c79f6e690eb88b073855d7ce28ed82a3912bf35c
                     </aside>                
                 </div>               
                <div className="div-rooms-mangr">

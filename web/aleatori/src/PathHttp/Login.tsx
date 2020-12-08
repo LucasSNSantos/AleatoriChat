@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React,{useContext} from 'react'
-=======
-import React, { ErrorInfo } from 'react'
->>>>>>> c79f6e690eb88b073855d7ce28ed82a3912bf35c
 import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
