@@ -1,16 +1,17 @@
-import React,{useContext} from 'react';
+import React,{useContext,ChangeEvent} from 'react';
 import '../pages/MainPage.css';
 import NavBar from '../Components/NavBar';
 import Tag from '../Components/Tags';
 import Room from '../Components/Box_Sala';
 import api from '../api/api';
 import TagClass from '../../../../backend/src/Models/tags';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
+import LoginContext from '../context/loginContext'
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
-
+    const ctx = useContext(LoginContext)
+    
     useEffect(()=>{
         api.get('tags',{
             headers:{
@@ -109,6 +110,7 @@ function MainPage(){
         if(!event.target.files){
             return;
         }
+    
         const data= new FormData();
         const images = Array.from(event.target.files);
         data.append("username",'lhimbo');
@@ -127,7 +129,7 @@ function MainPage(){
             }
         });
     }  
-    
+    console.log(ctx.user?.username)
     return(
         <div className="Main-Page">
             <NavBar/>
