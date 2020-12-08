@@ -7,7 +7,7 @@ export default {
     
     async createHash(req:Request,res:Response){
         const {username,user_password} = req.body;
-        
+        console.log(username,user_password)
         const results = await connection('tb_user').where('username',username).select('*');
         
         if(!results) return res.sendStatus(402)
