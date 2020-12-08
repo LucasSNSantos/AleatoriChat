@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
@@ -7,9 +7,26 @@ import api from '../api/api'
 import Navbar from '../Components/NavBar'
 import User from '../../../../backend/src/Models/Usuario'
 import { AxiosResponse } from 'axios'
+import loginContext from '../context/loginContext'
 
 
 function Login(){
+    const { handleLogin,token,user } = useContext(loginContext)
+
+    async function validate_login_by_PF(){
+        const username = document.querySelector('.user_input') as HTMLInputElement
+        const user_password = document.querySelector('.pass_input') as HTMLInputElement
+
+        const userLogin = {username:username.value,user_password:user_password.value}
+
+        if(userLogin.username == '' || userLogin.user_password == ''){ 
+            alert('Algum campo não foi preenchido!')
+        }else{
+
+            await handleLogin(userLogin.username,userLogin.user_password)
+            console.log(user,token)
+        }
+    }
 
     return (
         <div id="landing-page">
@@ -81,21 +98,7 @@ function Login(){
 
     }
 
-    async function validate_login_by_PF(){
-        const username = document.querySelector('.user_input') as HTMLInputElement
-        const user_password = document.querySelector('.pass_input') as HTMLInputElement
-
-        const userLogin = {username:username.value,user_password:user_password.value}
-
-        if(userLogin.username == '' || userLogin.user_password == '') alert('Algum campo não foi preenchido!')
-
-        const {data,status}:AxiosResponse | any = await api.post('/login',userLogin)
-        console.log(status)
-        if(status >= 200 && status < 300) window.location.pathname = "MainPage"
-
-    }
+    
    
-
-
 
 export default Login; 

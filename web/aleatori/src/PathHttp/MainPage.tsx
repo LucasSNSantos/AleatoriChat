@@ -1,10 +1,14 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import '../pages/MainPage.css';
 import NavBar from '../Components/NavBar';
 import Tag from '../Components/Tags';
 import Room from '../Components/Box_Sala';
+import loginContext from '../context/loginContext'
 
 function MainPage(){
+    const {user} = useContext(loginContext)
+
+    console.log(user?.username)
     return(
         <div className="Main-Page">
             <NavBar/>
@@ -29,7 +33,7 @@ function MainPage(){
                </div>
                 <div className="Main-Page-Chat">
                     <aside className="user_chat">
-                        <Room SalaName="Evangelion room you can (not) enter" Tags={["Anime","Evangelion"]}></Room>
+                        <Room SalaName="Evangelion" Tags={["Anime","Evangelion"]}></Room>
                         <Room SalaName="CAts" Tags={["Pets","Cats"]}></Room>
                         <Room SalaName="MSP430" Tags={["Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits","Circuits"]}></Room>
                         <Room SalaName="JJBA" Tags={["Anime","JOJO"]}></Room>

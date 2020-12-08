@@ -21,7 +21,6 @@ routes.put('/users',UserController.Update_password);
 routes.get('/Tags', TagController.Show);
 routes.post('/Tags', TagController.CreateTags);
 
-
 export default routes;
 
 
