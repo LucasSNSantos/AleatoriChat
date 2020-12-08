@@ -3,7 +3,6 @@ import React from 'react';
 import Tag from './Tags';
 import './Box_Sala.css';
 import { ReactChild } from 'react';
-import { Link } from 'react-router-dom';
 
 type props = {
     SalaName:string
