@@ -5,7 +5,6 @@ import api from '../api/api'
 import '../pages/Register.css';
 import {AxiosResponse} from 'axios';
 
-
 export default function Registro()
 {
     return (
@@ -61,7 +60,8 @@ export default function Registro()
                     description:description.value
                 }
                 await api.post('users',data);
-                
+                alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
+
                 window.location.pathname = "/";
             }else 
                 throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});

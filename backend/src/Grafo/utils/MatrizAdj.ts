@@ -1,4 +1,3 @@
-import { number } from 'yup';
 import Graph from '../Classes/Graph';
 import Vertex from '../Classes/Vertex';
 import AdjList from './Adjlist';
@@ -24,12 +23,12 @@ class MatrizAdj extends AdjList
         this.grafo.list_Edges.forEach(aresta => {
             if (this.grafo.isDigraph)
             {
-                if (aresta.vertex1.id == vx.id && aresta.vertex2.id == vy.id)
+                if (aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id)
                     return true;
             }
             else { 
-                if ((aresta.vertex1.id == vx.id && aresta.vertex2.id == vy.id) 
-                || (aresta.vertex1.id == vy.id && aresta.vertex2.id == vx.id))
+                if ((aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id) 
+                || (aresta.vertex1.id === vy.id && aresta.vertex2.id === vx.id))
                     return true;
             }
         });
@@ -42,7 +41,7 @@ class MatrizAdj extends AdjList
     public get_matrix()
     {
         const n = this.grafo.NumVertex();
-        var res:number[][] = new number[n][n];
+        var res:number[][] = [][n];
         for (let i = 0; i < n; i++)
         {
             for(let j=0; j < n; j++)

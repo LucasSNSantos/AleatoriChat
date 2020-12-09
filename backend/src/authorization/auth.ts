@@ -4,6 +4,9 @@ import {Request,Response,NextFunction} from 'express'
 
 async function validate(req:Request,res:Response,next:NextFunction){
     const {token} = req.headers;
+    if(req.url.includes('/uploads')){
+        next()
+    }else{
     
     if(!token) return next(new http_error.Unauthorized())
 
@@ -13,6 +16,7 @@ async function validate(req:Request,res:Response,next:NextFunction){
             
             next()
         })  
+    }
 }
 
 export default validate;

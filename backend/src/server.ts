@@ -5,41 +5,44 @@ import './Database/connection';
 import cors from 'cors';
 import {Server,Socket} from 'socket.io';
 import {createServer} from 'http';
-import userController from './socketUtils/userController';
+import path from 'path';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-
+app.use('/uploads', express.static(path.join(__dirname,'uploads')))
 const server = createServer(app);
 
 const io = new Server(server,{cors:{origin:'*'}});
 const user_bot = 'Aleatori Bot';
 
 io.on('connection',async (socket:Socket) =>{
-
-    socket.on('setupChat',async ({name,chat_id}) =>{    
-        
-        const user = await userController.getUserbyId(socket.id)
-
-        if(!user) socket.emit('serverError','user not found!')
-        else{
-            //user joined the chat 
-            socket.join(user!.chat_id);
-        }
-    })
     
-
-    socket.on('disconnect',async() =>{
-        const user = await userController.getUserbyId(socket.id)
-        await userController.deleteUserbyId(socket.id)
+    //  socket.on('joinChat',user =>{
+    //     console.log(user + " CONECTADOOOOO")
+    //  })
+    // socket.on('leftChat'user =>{
         
-        try{
-            io.to(user!.chat_id).emit('serverMessage',{name:user_bot,message:`The user ${user!.name} has left the chat`})
-        }catch(e){}        
-    })
+    // })
+    // socket.on('joinRoom'user =>{
+        
+    // })
+    // socket.on('leftRoom',user =>{
+
+    // })
+    // socket.on('sendMessage',msg =>{
+
+    // })
+    // socket.on('receiveMessage',msg =>{
+
+    // })
+
+    // socket.on('disconnect',user =>{
+
+    // })
+
 })
 
 server.listen(4444,()=> {

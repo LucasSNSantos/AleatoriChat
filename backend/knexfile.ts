@@ -7,9 +7,9 @@ export default  {
     client: "pg",
     connection: {
       host: "127.0.0.1",
-      database: "postgres", // > aleatoridb default
-      user: "postgres", // > postgres default
-      password: "SYS"
+      database: "aleatoriDB", // > aleatoridb default
+      user: "Aleatori_user", // > postgres default
+      password: "0000"
     }
   },
 

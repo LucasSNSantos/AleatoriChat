@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "public"
+    "public", "../../backend/src/Grafo"
   ]
 }

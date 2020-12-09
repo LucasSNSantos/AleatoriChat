@@ -4,9 +4,10 @@ class Vertex<obj>
     Label:string;
     objec:obj;
 
-    constructor(id: number, label:string){
+    constructor(id: number, label:string,objct:obj){
         this.id = id;
         this.Label = label;
+        this.objec = objct;
     }
 
 

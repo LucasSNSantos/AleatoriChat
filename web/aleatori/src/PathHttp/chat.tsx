@@ -1,18 +1,40 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import '../pages/global.css'
 import '../pages/chat.css'
+import LoginContext from '../context/loginContext';
 import logo from '../aleatori.png'
 import IO from "socket.io-client"
+import chat from '../utils/chat/chatFunctions';
 const ENDPOINT = 'http://localhost:4444'
 
-function page(){
+interface User{
+    username:string;
+    user_id:number;
+    user_email:string;
+    securitykey:string;
+    description:string;
+    img_src:string;
+    afinity:string;
+}
+
+function Chat(){
     
     const socket = IO(ENDPOINT,{autoConnect:true})
-    
+    const {user} = useContext(LoginContext)
+    const chate  = new chat();
+
+    function send(){
+        var buffer = document.querySelector('#chat_aux') as HTMLInputElement;
+        const str = user?.username as string;
+        chate.sendMessage(buffer.value,document.querySelector('.chat_messages') as HTMLDivElement,str)
+        buffer.value = '';
+    }
+
     return(
         <div id="content_wrapper">
             <div className="Members">
                 Members
+                {"\n"+user?.username}
             </div>
             <div id="chat">
                 <header>
@@ -20,12 +42,12 @@ function page(){
                     <h1>AleatoriChat</h1>
                 </header>
                 <div className="chat_messages"></div>
-                <div>
+                <footer>
                     <input id="chat_aux" className="chat_feed" placeholder="Type here:"/>
-                    <footer>
-                        <button></button>
-                    </footer>
-                </div>
+                    <button id="send_btn" onClick={send}>
+                        SEND
+                    </button>
+                </footer>
             </div>
             
         </div>
@@ -33,4 +55,4 @@ function page(){
     )
 }
 
-export default page;
+export default Chat;

@@ -1,6 +1,8 @@
+import { throws } from 'assert'
 import { AxiosResponse } from 'axios'
 import React,{createContext, ReactNode, useState,useEffect} from 'react'
 import api from '../api/api'
+import {LoadingComponent} from '../PathHttp/loading'
 
 interface User{
     username:string;
@@ -8,11 +10,14 @@ interface User{
     user_email:string;
     securitykey:string;
     description:string;
+    img_src:string;
 }
 
 interface apiResponse{
+    isLogged:boolean;
     user:User | null;
-    token:string | null;
+    //token:string | null;
+    //loading:boolean;
     handleLogin(username:string,user_password:string):Promise<void>
 }
 
@@ -25,32 +30,38 @@ const loginContext = createContext<apiResponse>({} as apiResponse)
 export function LoginProvider({children}:props){
     const [user,setUser] = useState<User|null>(null)
     const [token,setToken] = useState<string|null>(null)
-    const [loading,setLoading] = useState<boolean>(false)
+    //const [loading,setLoading] = useState<boolean>(false)
+    const [isLogged,setLogged] = useState<boolean>(false)
 
-    // useEffect(() =>{
-    //     (async ()=>{
-    //         const token = localStorage.getItem('token')
-        
-    //     })()
-    // })
+    useEffect(()=>{
+        (async()=>{
+            const storagedHash = await localStorage.getItem('token')
+            const storagedUser = await localStorage.getItem('user')
 
+            if(storagedHash && storagedUser){
+                setUser(JSON.parse(storagedUser!))
+                //setLoading(false)
+            }
+        })()
+    },[])
 
     async function handleLogin(username:string,user_password:string){
-        setLoading(true)
-        const {data,status}:AxiosResponse = await api.post('login',{username,user_password})
-        console.log(data.user)
-        if(!data) throw new Error('api retornou valor nulo!')
 
-        setUser(data.user)
-        setToken(data.hash)
-        localStorage.setItem('token',token!)
-        setLoading(false)
+            const {data,status}:AxiosResponse = await api.post('login',{username,user_password})
+
+            if(!data) throw new Error('Usuario ou senha incorretos')
+
+            setUser(data?.user)
+            await localStorage.setItem('token',data?.hash)
+            await localStorage.setItem('user',JSON.stringify(data?.user))
+            api.defaults.headers.token = data.hash
+        
+        
     }
 
-    if(loading) return (<h1>LOADING....</h1>)
 
     return (
-        <loginContext.Provider value={{user,token,handleLogin}}>
+        <loginContext.Provider value={{user:user,isLogged:!!user,handleLogin}}>
             {children}
         </loginContext.Provider>
     )

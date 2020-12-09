@@ -8,6 +8,7 @@ class Usuario
     securitykey:string;
     description:string;
     afinity:string;
+    img_src:string;
 }
 
 export default Usuario;
