@@ -1,5 +1,5 @@
-import React,{createContext,ReactNode,useState,useContext} from 'react'
-import api from '../api/api'
+import {createContext,ReactNode} from 'react'
+//import api from '../api/api'
 
 // type User = {
 //     user_id:string;
@@ -25,9 +25,9 @@ type Props = {
 }
 
 
-function ComponentContext({children}:Props){
+// function ComponentContext({children}:Props){
    
-}
+// }
 
 export default AppContext;
 

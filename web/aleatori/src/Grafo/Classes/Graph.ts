@@ -1,20 +1,17 @@
-/**
- * Graph class
- * : obj => type of the graph's vertex that contains the info about something that is desirable;
- */
-
-import { boolean, number, string } from 'yup';
 import AdjList from '../utils/Adjlist';
 import MatrixAdj from '../utils/MatrizAdj';
 import edge from './Edge';
 import Vertex from './Vertex'; 
 const max_value:number = 99999999999999;
+/**
+ * Graph class
+ * : obj => type of the graph's vertex that contains the info about something that is desirable;
+ */
 
 
 class Graph<obj>{
     public list_Vertex:Array<Vertex<obj>>;
     public list_Edges:Array<edge<obj>>;
-    public name:string;
     public isDigraph:boolean;
     private Adj:AdjList;
 
@@ -46,11 +43,11 @@ class Graph<obj>{
      * @param e 
      */
     public AddEdge(e:edge<obj>) {
-        if(e.isDirected == this.isDigraph){
-            if(this.list_Vertex.indexOf(e.vertex1)!= -1)
+        if(e.isDirected === this.isDigraph){
+            if(this.list_Vertex.indexOf(e.vertex1)!== -1)
                 this.list_Vertex.push(e.vertex1);
 
-            if(this.list_Vertex.indexOf(e.vertex2)!= -1)
+            if(this.list_Vertex.indexOf(e.vertex2)!== -1)
                 this.list_Vertex.push(e.vertex2);
 
             this.list_Edges.push(e);
@@ -61,7 +58,7 @@ class Graph<obj>{
      * @param e 
      */
     public RemoveEdge(e:edge<obj>){
-        if(e.isDirected == this.isDigraph){
+        if(e.isDirected === this.isDigraph){
                 this.list_Vertex.splice(
                 this.list_Edges.indexOf(e)
             );
@@ -86,7 +83,7 @@ class Graph<obj>{
     {
         let temp;
         this.list_Vertex.forEach(v => {
-            if(v.id == id)
+            if(v.id === id)
             {
                 temp = v;
                 return temp;
@@ -105,8 +102,8 @@ class Graph<obj>{
         var v2id:number = +str_aux[1];
 
         this.list_Edges.forEach(a => {
-             if ((a.vertex1.id == v1id && a.vertex2.id == v2id)||
-                (a.vertex1.id == v2id && a.vertex2.id == v1id))
+             if ((a.vertex1.id === v1id && a.vertex2.id === v2id)||
+                (a.vertex1.id === v2id && a.vertex2.id === v1id))
             {
                 temp = a;
                 return temp;
@@ -120,7 +117,22 @@ class Graph<obj>{
 
         this.DFS_search(source, visited);
     }
-
+    public is_bounded(vx:Vertex<any>, vy:Vertex<any>)
+    {
+        this.list_Edges.forEach(aresta => {
+            if (this.isDigraph)
+            {
+                if (aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id)
+                    return true;
+            }
+            else { 
+                if ((aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id) 
+                || (aresta.vertex1.id === vy.id && aresta.vertex2.id === vx.id))
+                    return true;
+            }
+        });
+        return false;
+    }
     protected DFS_search(v:number, visited:Array<boolean>){
         visited[v] = true;
         console.log(v);
@@ -137,7 +149,7 @@ class Graph<obj>{
         var min:number = max_value, min_index = -1;
 
         for (let v = 0; v < this.NumVertex(); v++)
-            if (vst[v] == false && dist[v] <= min)
+            if (vst[v] === false && dist[v] <= min)
             {
                 min = dist[v];
                 min_index = v;
@@ -151,7 +163,7 @@ class Graph<obj>{
 
         var vraux:any = this.BuscaVertice(source);;
 
-        if(prnt[source] == -1)
+        if(prnt[source] === -1)
         {
             return vraux.Label;
         }
@@ -169,9 +181,9 @@ class Graph<obj>{
         var out_put:string = "";
         const n = this.NumVertex();
         
-        var parent:number[] = new number[n];
-        var dist:number[] = new number[n];
-        var visitado:boolean[] = new boolean[n];
+        var parent  = [];
+        var dist = [];
+        var visitado = [];
 
         for (let i = 0; i < n; i++)
         {
@@ -188,8 +200,8 @@ class Graph<obj>{
             visitado[u] = true;
 
             for (let v = 0; v < n; v++)
-                if (!visitado[v] && matrix.get_matrix()[u][v] != 0
-                    && dist[u] != max_value
+                if (!visitado[v] && matrix.get_matrix()[u][v] !== 0
+                    && dist[u] !== max_value
                     && dist[u] + matrix.get_matrix()[u][v] < dist[v]) 
                 {
                     dist[v] = dist[u] + matrix.get_matrix()[u][v];
