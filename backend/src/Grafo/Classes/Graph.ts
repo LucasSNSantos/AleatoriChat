@@ -13,6 +13,10 @@ const max_value:number = 99999999999999;
 interface tag_aux{
     id:number;
 }
+interface rtr_aux{
+    caminho:string[];
+    chat_id:number;
+}
 class Graph<obj>{
     public list_Vertex:Array<Vertex<obj>>;
     public list_Edges:Array<edge<obj>>;
@@ -180,7 +184,8 @@ class Graph<obj>{
         return res;
     }
     //const grafo = new Graph<User>(false);
-
+    private last_id;
+    
     public onenterTheParty(user:any){
         if(typeof(user) == undefined)
             return;
@@ -188,7 +193,7 @@ class Graph<obj>{
         const new_usr = new Vertex<User>(user?.user_id,user?.username,user)
         
         this.AddVertex(new_usr);
-        if(this.NumVertex()>2 ){
+        if(this.NumVertex()>=2){
             this.list_Vertex.forEach(async element => {
             
                 if(!this.is_bounded(new_usr,element))
@@ -196,9 +201,17 @@ class Graph<obj>{
                      this.AddEdge(new edge(await this.calcweight(new_usr.id,element.id),new_usr,element,false))
                 }
             });
+            this.last_id = new_usr.id;
         }
-        //@ts-ignore
-        //grafo.Dijkstra(user?.user_id,1) dkstra
+        if(new_usr.id != this.last_id){
+            //@ts-ignore
+            const caminho = grafo.Dijkstra(new_usr.id,last_id);
+            const new_chat:rtr_aux = {} as rtr_aux;
+            new_chat.caminho = caminho;
+            new_chat.chat_id = 1; 
+            return new_chat;
+        }
+        
         //conectar (tantos usuarios)
     }
     

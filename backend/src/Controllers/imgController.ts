@@ -6,11 +6,11 @@ export default {
     async uploadImgUser(request:Request, res:Response) 
     {   
         const {img_src,username} = request.body
-        console.log(img_src+"\n"+username+"\n"+request.file);
+
         var img = "";
         if(!img_src){
             const requestImages = request.file as Express.Multer.File;
-            const image = requestImages.path;
+            const image = "http://localhost:4444/uploads/"+requestImages.filename;
             img = image;
         }else{
             img = img_src;

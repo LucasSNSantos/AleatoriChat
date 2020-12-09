@@ -46,6 +46,20 @@
     width: 100%;
     
 }
+.chat_messages span{
+    color: #181c24;
+}
+#send_btn{
+    position: absolute;
+    width: 100px;
+    left: 700px;
+    height: 40px;
+    cursor: pointer;
+    color:white;
+    font-family: Consolas;
+    border: none;
+    background: #3498db;
+}
 
 #chat footer{
     position: relative;
@@ -58,9 +72,6 @@
     align-items: baseline;
 }
 
-#chat footer button{
-
-}
 
 #chat_aux{
     font-size: calc(18px);
@@ -91,10 +102,14 @@
 }
 #chat .chat_messages{
     background: #FFF;
-
+    overflow-y: scroll;
     width: 100%;
     height:70%;
 
+}
+#user_name{
+    font-size: 20px;
+    color: red;
 }
 .Members
 {
