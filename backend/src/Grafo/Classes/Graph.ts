@@ -208,6 +208,7 @@ class Graph<obj>{
                 
                 
                 const caminho = this.Dijkstra(new_usr.id,this.last_id);
+                console.log(caminho)
                 const new_chat:rtr_aux = {} as rtr_aux;
                 new_chat.caminho = caminho;
                 new_chat.chat_id = tb_sala_id.id; 
@@ -221,8 +222,6 @@ class Graph<obj>{
             this.last_id = new_usr.id;
         }
         
-        
-        //conectar (tantos usuarios)
     }
     
     public async calcweight(af1:number, af2:number ){
@@ -242,6 +241,7 @@ class Graph<obj>{
                 }
             }
         }
+        console.log(peso);
         return peso;
     }
     

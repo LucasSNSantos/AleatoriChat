@@ -7,6 +7,7 @@ import { AxiosResponse } from 'axios';
 
 export default function RedeemPassword()
 {
+    const token = localStorage.getItem('token');
     return(
         <>
             <Navbar></Navbar>            
@@ -61,23 +62,16 @@ export default function RedeemPassword()
                     user_email: user_email.value,
                 }
                 
-                const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
-                    if(erro.response){
-                        throw Object.assign(new Error( erro.response.data),{code:400});
-                    }
-                });
-                const tkn = token as AxiosResponse;
-                
                 //confirmar
                 const user = await api.get('users',{
                     headers:{
-                        'token': tkn.data.hash
+                        'token': token,
                     }
                 });            
                 const users = user.data as Array<User>;
                 
                 const userFound = users.find(users => users.user_email === data.user_email) as User;
-
+                
                  const sending= {
                     new_pass : user_new_pass.value,
                     id: userFound.user_id,
@@ -85,21 +79,19 @@ export default function RedeemPassword()
 
                 if(userFound.securitykey !== data.securityKey)
                     throw Object.assign(new Error( `SecurityKey is not the same for ${data.user_email}.`),{code:400});
-                
+                console.log(userFound.user_id)
                 //update
-                await api.post('redeempssd',sending).catch(function (erro){
+                await api.post('userspass',sending,{
+                    headers:{
+                        'token': token,
+                    }
+                }).catch(function (erro){
                     if(erro.response){
                         alert(erro.response.data)
                     }
                 });
-                await api.post('redeempssd',{mail : data.user_email , sended : true, datah: Date.now()}).catch(function (erro){
-                    if(erro.response){
-                        alert(erro.response.data)
-                    }
-                });
-
                 await alert(`Enviando um email de confirmação para ${user_email.value}`)
-                window.location.pathname = "/login"
+                window.location.pathname = "/"
             }else 
                 throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});
            

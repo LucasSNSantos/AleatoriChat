@@ -21,12 +21,12 @@ const user_bot = 'Aleatori Bot';
 
 io.on('connection',async (socket:Socket) =>{
     console.log('Socket connectado')
-    
+
     socket.on('joinSala',({id}) =>{
         socket.join(id)
     })
-    socket.on('sendMessage',msgUser =>{
-        socket.to(msgUser.sala.id).emit('receivedMessage',msgUser.body)
+    socket.on('selfMessage',msgUser =>{
+        socket.to('sala_1').emit('renderMessage',msgUser)
     })
     socket.on('receiveMessage',msg =>{
         socket.emit('renderMessage',msg)
@@ -53,7 +53,6 @@ io.on('connection',async (socket:Socket) =>{
     // socket.on('disconnect',user =>{
 
     // })
-
 })
 
 server.listen(4444,()=> {

@@ -8,16 +8,6 @@ import IO from "socket.io-client"
 import chat from '../utils/chat/chatFunctions';
 const ENDPOINT = 'http://localhost:4444'
 
-interface User{
-    username:string;
-    user_id:number;
-    user_email:string;
-    securitykey:string;
-    description:string;
-    img_src:string;
-    afinity:string;
-}
-
 function Chat(){
     const socket = IO(ENDPOINT,{autoConnect:true})
     const {user} = useContext(LoginContext)
@@ -30,15 +20,27 @@ function Chat(){
             id = await api.post('sala',data)
         })()
     })
-
-    function send(){
+    function send({body,username}:any){
         var buffer = document.querySelector('#chat_aux') as HTMLInputElement;
         const str = user?.username as string;
         chate.sendMessage(buffer.value,document.querySelector('.chat_messages') as HTMLDivElement,str)
         buffer.value = '';
+        const userMsg = {body:buffer.value,username:user?.username}
+        socket.emit('selfMessage',userMsg)
     }
-    if(id != undefined) socket.emit('joinSala',{id})
-    
+    function renderMessage({body,username}:any){
+        var buffer = document.querySelector('#chat_aux') as HTMLInputElement;
+        //@ts-ignore
+        chate.sendMessage(body,document.querySelector('.chat_messages') as HTMLDivElement,user?.username)
+        buffer.value = ''
+    }
+    socket.emit('joinSala',{id:'sala_1'})
+    socket.on('renderMessage',({body,username}:any) =>{
+        renderMessage({body,username})
+    })
+    socket.on('selfMessage',({body,username}:any) =>{
+        send({body,username})
+    })
     return(
         <div id="content_wrapper">
             <div className="Members">

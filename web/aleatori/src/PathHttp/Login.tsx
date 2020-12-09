@@ -20,7 +20,7 @@ function Login(){
         const user_password = document.querySelector('.pass_input') as HTMLInputElement
 
         const userLogin = {username:username.value,user_password:user_password.value}
-        console.log(userLogin)
+        
         if(userLogin.username === '' || userLogin.user_password === ''){ 
 
             alert('Algum campo não foi preenchido!')

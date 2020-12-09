@@ -6,6 +6,7 @@ export default class Chatfunc{
 
     const user = document.createElement('p')
     user.classList.add('meta')
+    console.log('Peso : 0');
     user.innerText = autor
     user.innerHTML = `<span id="user_name">${autor+" :"}<span/>`
     div.appendChild(user)

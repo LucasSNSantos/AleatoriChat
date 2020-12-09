@@ -9,12 +9,14 @@ export default {
 
         const vertex = {id,username}
         const vertex2 = {id:5,username:'davi'}
+        
         Graph.AddVertex(new Vertex(vertex.id,vertex.username))
-
+        console.log(Graph)
         await Graph.onEnterTheParty(vertex2).then(id =>{
             return res.status(200).json({id})
         }).catch(e =>{
             return res.status(400).json({e})
         })
+
     },
 }

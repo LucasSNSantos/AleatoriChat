@@ -15,12 +15,13 @@ const upload = multer(uploadConfig);
 routes.post('/login',authController.createHash);
 routes.post('/users',UserController.create);
 
+
 //Rotas do usuario
 routes.use(validate) 
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});
 routes.get('/users',UserController.Show);
+routes.post('/userspass',UserController.Update_password);
 routes.get('/users/:id',UserController.index);
-routes.put('/users',UserController.Update_password);
 routes.post('/imguploadUser',upload.single('image'),imgController.uploadImgUser);
 
 //sala
