@@ -2,12 +2,6 @@ import {request, Request,Response} from 'express';
 import db from '../Database/connection';
 
 
-/*
-            const perm = await db('tb_user as u').select("user_id","username","p.description").from('tb_user as u')
-            .rightJoin('tb_permission_user as pu', 'pu.fk_user_id', 'u.user_id')
-            .rightJoin('tb_permissions as p', 'p.id_permission', 'pu.fk_permission_id').where('user_id', user_id); 
-*/
-
 class FeedController
 {
 
