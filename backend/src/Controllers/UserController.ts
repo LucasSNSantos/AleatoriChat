@@ -58,7 +58,7 @@ export default {
             if(await db('tb_user').select('username').where('username',data.username)){
                 
                 let mail: MailService = new MailService()
-                mail.sendMail(`${user_email}`, 'Bem vindo ao AleatoriChat', `Para sua segurança essa chave CHAVE`);
+                mail.sendMail(`${user_email}`, 'Bem vindo ao AleatoriChat', `Esperamos que aproveite!, para sua segurança salve essa chave de recuperaçao de senha ${data.securitykey}`);
                 console.log("enviei mail");
                 return response.status(201).send('Você foi cadastrado com sucesso. Bem vindo ao AleatoriChat!.');            
             }
