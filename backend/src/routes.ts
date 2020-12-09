@@ -22,9 +22,15 @@ routes.get('/users',UserController.Show);
 routes.get('/users/:id',UserController.index);
 routes.put('/users',UserController.Update_password);
 routes.post('/imguploadUser',upload.single('image'),imgController.uploadImgUser);
+
+//sala
+routes.post('/sala',loadingController.enterTheParty) 
+
 //chats
 routes.get('/Chats', ChatController.Index);
 routes.post('/Chats', ChatController.CreateChat);
+
+
 //rotas da Tag
 routes.get('/Tags', TagController.Show);
 routes.get('/Tags/:id', TagController.fromview);

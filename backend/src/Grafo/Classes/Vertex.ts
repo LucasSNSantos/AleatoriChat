@@ -2,12 +2,11 @@ class Vertex<obj>
 {
     id:number;
     Label:string;
-    objec:obj;
 
-    constructor(id: number, label:string,objct:obj){
-        this.id = id;
+    constructor(id: number, label:string){
         this.Label = label;
-        this.objec = objct;
+        this.id = id;
+        
     }
 
 

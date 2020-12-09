@@ -7,6 +7,7 @@ import api from '../api/api';
 import TagClass from '../../../../backend/src/Models/tags';
 import { useEffect,useState } from 'react';
 import LoginContext from '../context/loginContext'
+import {LoadingComponent} from './loading'
 
 // interface User{
 //     username:string;
@@ -19,7 +20,7 @@ import LoginContext from '../context/loginContext'
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
-    const {user} = useContext(LoginContext)
+    const {user,loading} = useContext(LoginContext)
     const token = localStorage.getItem('token');
     
     useEffect(()=>{
@@ -132,7 +133,7 @@ function MainPage(){
         });
         console.log("lul")
     }  
-    
+    if(loading) return (<LoadingComponent/>)
     return(
         <div className="Main-Page">
             <NavBar/>
