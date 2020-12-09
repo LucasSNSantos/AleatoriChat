@@ -13,8 +13,8 @@ const routes = Router();
 const upload = multer(uploadConfig);
 //rota de login
 routes.post('/login',authController.createHash);
-
 routes.post('/users',UserController.create);
+
 //Rotas do usuario
 routes.use(validate) 
 routes.get('/',(request, response)=>{response.json({message:"Seja Bem-Vindo ao AleatoriChat"})});

@@ -201,7 +201,6 @@ class Graph<obj>{
                      this.AddEdge(new edge(await this.calcweight(new_usr.id,element.id),new_usr,element,false))
                 }
             });
-            this.last_id = new_usr.id;
         }
         if(new_usr.id != this.last_id){
             //@ts-ignore
@@ -211,7 +210,7 @@ class Graph<obj>{
             new_chat.chat_id = 1; 
             return new_chat;
         }
-        
+        this.last_id = new_usr.id;
         //conectar (tantos usuarios)
     }
     
