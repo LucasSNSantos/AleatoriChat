@@ -1,3 +1,4 @@
+import { throws } from 'assert'
 import { AxiosResponse } from 'axios'
 import React,{createContext, ReactNode, useState,useEffect} from 'react'
 import api from '../api/api'
@@ -45,12 +46,16 @@ export function LoginProvider({children}:props){
     },[])
 
     async function handleLogin(username:string,user_password:string){
-        const {data,status}:AxiosResponse = await api.post('login',{username,user_password})
 
-        setUser(data.user)
-        await localStorage.setItem('token',data.hash)
-        await localStorage.setItem('user',JSON.stringify(data.user))
-        api.defaults.headers.token = data.hash
+            const {data,status}:AxiosResponse = await api.post('login',{username,user_password})
+
+            if(!data) throw new Error('Usuario ou senha incorretos')
+
+            setUser(data?.user)
+            await localStorage.setItem('token',data?.hash)
+            await localStorage.setItem('user',JSON.stringify(data?.user))
+            api.defaults.headers.token = data.hash
+        
         
     }
 
