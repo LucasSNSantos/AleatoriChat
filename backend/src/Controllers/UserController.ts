@@ -1,6 +1,6 @@
 import {Request,Response} from 'express';
 import db from '../Database/connection';
-import nodemailer from "nodemailer";
+import MailService from './mailer/MailService';
 
 export default {
 
@@ -57,31 +57,9 @@ export default {
             //trigger de cadastro
             if(await db('tb_user').select('username').where('username',data.username)){
                 
-                // //Defining mailer
-                // const transporter = nodemailer.createTransport({
-                //     host: "smtp.gmail.com",
-                //     port: 587,
-                //     secure: false, // true for 465, false for other ports
-                //     auth: {
-                //       user: "noreply.aleatorichat@gmail.com", // Sender Email address
-                //       pass: "Ale@torius912Chat", // Sender Email password
-                //     },
-                //     tls: {
-                //         // Fix for rejection because of localhost
-                //         rejectUnauthorized: false
-                //       }
-                    
-                //   });
-                //   // Send mail (provavelmente rolava fzr uma classe pra deixar bonito but it's life)
-                //   var info = await transporter.sendMail({
-                //     from: `"AleatoriChat" <noreply.aleatorichat@gmail.com>`, // Render address
-                //     to: `${data.user_email}`, // Receivers
-                //     subject: "Hello new AleatoriUser! ✔", // Title
-                //     text: "Hello world?", // Plaint text email
-                //     html: "<b>Hello world?</b>", // html for styling the email
-                //   });
-                //   console.log(`${info}\n PASSOU`);
-
+                let mail: MailService = new MailService()
+                mail.sendMail(`${user_email}`, 'se funcionar eu como um cu', 'funciona nmrl');
+                console.log("enviei mail");
                 return response.status(201).send('Você foi cadastrado com sucesso. Bem vindo ao AleatoriChat!.');            
             }
         }catch(error){

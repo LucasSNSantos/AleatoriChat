@@ -4,7 +4,7 @@ import Navbar from '../Components/NavBar';
 import api from '../api/api'
 import '../pages/Register.css';
 import {AxiosResponse} from 'axios';
-import MailService from './mailer/MailService';
+
 
 export default function Registro()
 {
@@ -50,8 +50,7 @@ export default function Registro()
             const user_email = document.querySelector('input[id="email_"]') as HTMLInputElement;
             const description = document.querySelector('input[id="description_"]') as HTMLInputElement;
             const re = /\S+@\S+\.\S+/;
-
-
+            
             if(username.value !== "" && user_password.value !== "" && user_email.value !== ""){
                 if(!re.test(String(user_email.value).toLowerCase()))
                     throw Object.assign(new Error( "E-mail não válido."),{code:400});
@@ -61,25 +60,8 @@ export default function Registro()
                     user_email:user_email.value,
                     description:description.value
                 }
-
-                const token : void | AxiosResponse = await api.post('login',data).catch(function (erro){
-                    if(erro.response){
-                        throw Object.assign(new Error( erro.response.data),{code:400});
-                    }
-                });
-                const tkn = token as AxiosResponse;
-                await api.post('users',data,{
-                    headers:{
-                        'token': tkn.data.hash
-                    }
-                }).catch(function (erro){
-                    if(erro.response){
-                        throw Object.assign(new Error( erro.response.data),{code:400});
-                    }
-                });
-                let mailservice: MailService = new MailService();
-                mailservice.sendMail(`${user_email}`, 'Corno', 'PI é um inferno');
-                alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
+                await api.post('users',data);
+                
                 window.location.pathname = "/";
             }else 
                 throw Object.assign(new Error( "Algum campo não foi preenchido."),{code:400});

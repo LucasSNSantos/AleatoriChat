@@ -12,7 +12,7 @@ function Routes(){
             <Switch>
                 <Route path="/" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>
-                <Route path="/mainpage" exact component={MainPage}/>
+                <Route path="/MainPage" exact component={MainPage}/>
                 <Route path="/createAccount" exact component={Register}/>
                 <Route path="/RedeemPasswd" exact component={RedeemPasswd}/>
                 <Route path="/chat" exact component={Chat}/>

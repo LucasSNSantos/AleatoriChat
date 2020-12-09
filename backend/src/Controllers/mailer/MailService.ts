@@ -5,9 +5,16 @@ import * as nodemailer from 'nodemailer';
       private _transporter: nodemailer.Transporter; 
       
       constructor() { 
-        this._transporter = nodemailer.createTransport( 
-           `smtps://<noreply.aleatorichat@gmail.com>:<Ale@torius912Chat>@smtp.gmail.com`
-        ); 
+        this._transporter = nodemailer.createTransport({
+          
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+            user: "noreply.aleatorichat@gmail.com", // generated ethereal user
+            pass: "Ale@torius912Chat", // generated ethereal password
+          },
+        });
       } 
       sendMail(to: string, subject: string, content: string) { 
         let options = { 
