@@ -1,20 +1,21 @@
+import { boolean, number } from 'yup';
+import AdjList from '../utils/Adjlist';
+import MatrixAdj from '../utils/MatrizAdj';
+import edge from './Edge';
+import Vertex from './Vertex'; 
+import db from '../../Database/connection';
+const max_value:number = 99999999999999;
 /**
  * Graph class
  * : obj => type of the graph's vertex that contains the info about something that is desirable;
  */
 
-import { boolean, number, string } from 'yup';
-import AdjList from '../utils/Adjlist';
-import MatrixAdj from '../utils/MatrizAdj';
-import edge from './Edge';
-import Vertex from './Vertex'; 
-const max_value:number = 99999999999999;
-
-
+interface tag_aux{
+    id:number;
+}
 class Graph<obj>{
     public list_Vertex:Array<Vertex<obj>>;
     public list_Edges:Array<edge<obj>>;
-    public name:string;
     public isDigraph:boolean;
     private Adj:AdjList;
 
@@ -46,11 +47,11 @@ class Graph<obj>{
      * @param e 
      */
     public AddEdge(e:edge<obj>) {
-        if(e.isDirected == this.isDigraph){
-            if(this.list_Vertex.indexOf(e.vertex1)!= -1)
+        if(e.isDirected === this.isDigraph){
+            if(this.list_Vertex.indexOf(e.vertex1)!== -1)
                 this.list_Vertex.push(e.vertex1);
 
-            if(this.list_Vertex.indexOf(e.vertex2)!= -1)
+            if(this.list_Vertex.indexOf(e.vertex2)!== -1)
                 this.list_Vertex.push(e.vertex2);
 
             this.list_Edges.push(e);
@@ -61,7 +62,7 @@ class Graph<obj>{
      * @param e 
      */
     public RemoveEdge(e:edge<obj>){
-        if(e.isDirected == this.isDigraph){
+        if(e.isDirected === this.isDigraph){
                 this.list_Vertex.splice(
                 this.list_Edges.indexOf(e)
             );
@@ -86,7 +87,7 @@ class Graph<obj>{
     {
         let temp;
         this.list_Vertex.forEach(v => {
-            if(v.id == id)
+            if(v.id === id)
             {
                 temp = v;
                 return temp;
@@ -105,8 +106,8 @@ class Graph<obj>{
         var v2id:number = +str_aux[1];
 
         this.list_Edges.forEach(a => {
-             if ((a.vertex1.id == v1id && a.vertex2.id == v2id)||
-                (a.vertex1.id == v2id && a.vertex2.id == v1id))
+             if ((a.vertex1.id === v1id && a.vertex2.id === v2id)||
+                (a.vertex1.id === v2id && a.vertex2.id === v1id))
             {
                 temp = a;
                 return temp;
@@ -120,7 +121,22 @@ class Graph<obj>{
 
         this.DFS_search(source, visited);
     }
-
+    public is_bounded(vx:Vertex<any>, vy:Vertex<any>)
+    {
+        this.list_Edges.forEach(aresta => {
+            if (this.isDigraph)
+            {
+                if (aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id)
+                    return true;
+            }
+            else { 
+                if ((aresta.vertex1.id === vx.id && aresta.vertex2.id === vy.id) 
+                || (aresta.vertex1.id === vy.id && aresta.vertex2.id === vx.id))
+                    return true;
+            }
+        });
+        return false;
+    }
     protected DFS_search(v:number, visited:Array<boolean>){
         visited[v] = true;
         console.log(v);
@@ -137,7 +153,7 @@ class Graph<obj>{
         var min:number = max_value, min_index = -1;
 
         for (let v = 0; v < this.NumVertex(); v++)
-            if (vst[v] == false && dist[v] <= min)
+            if (vst[v] === false && dist[v] <= min)
             {
                 min = dist[v];
                 min_index = v;
@@ -151,7 +167,7 @@ class Graph<obj>{
 
         var vraux:any = this.BuscaVertice(source);;
 
-        if(prnt[source] == -1)
+        if(prnt[source] === -1)
         {
             return vraux.Label;
         }
@@ -163,6 +179,49 @@ class Graph<obj>{
 
         return res;
     }
+    //const grafo = new Graph<User>(false);
+
+    public onenterTheParty(user:any){
+        if(typeof(user) == undefined)
+            return;
+        //@ts-ignore
+        const new_usr = new Vertex<User>(user?.user_id,user?.username,user)
+        
+        this.AddVertex(new_usr);
+        if(this.NumVertex()>2 ){
+            this.list_Vertex.forEach(async element => {
+            
+                if(!this.is_bounded(new_usr,element))
+                {
+                     this.AddEdge(new edge(await this.calcweight(new_usr.id,element.id),new_usr,element,false))
+                }
+            });
+        }
+        //@ts-ignore
+        //grafo.Dijkstra(user?.user_id,1) dkstra
+        //conectar (tantos usuarios)
+    }
+    
+    public async calcweight(af1:number, af2:number ){
+        
+        const {rows1} = await db.raw(`select id from get_user_all_tags(${af1}) as (id int) `);
+        const {rows2} = await db.raw(`select id from get_user_all_tags(${af2}) as (id int) `);
+      
+        const id1 = rows1 as tag_aux[];
+        const id2 = rows2 as tag_aux[];
+        var peso:number=0;
+        
+        for(let i = 0 ; i<id1.length;i++){
+            for(let j = 0 ; j<id2.length;j++){
+                if(id1[i] !== id2[j]){
+                    peso += +id1[i].id as number;
+                    peso += +id2[j].id as number;
+                }
+            }
+        }
+        return peso;
+    }   
+
     public Dijkstra(source:number, dest:number)
     {
         var matrix:MatrixAdj = new MatrixAdj(this);
@@ -188,8 +247,8 @@ class Graph<obj>{
             visitado[u] = true;
 
             for (let v = 0; v < n; v++)
-                if (!visitado[v] && matrix.get_matrix()[u][v] != 0
-                    && dist[u] != max_value
+                if (!visitado[v] && matrix.get_matrix()[u][v] !== 0
+                    && dist[u] !== max_value
                     && dist[u] + matrix.get_matrix()[u][v] < dist[v]) 
                 {
                     dist[v] = dist[u] + matrix.get_matrix()[u][v];

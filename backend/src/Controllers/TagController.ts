@@ -15,6 +15,18 @@ class TagController
         }
     }
 
+    async fromview(req:Request, res:Response) {
+        const {id} = req.params;
+        try
+        {  
+            const {rows} = await db.raw(`select id from get_user_all_tags(${id}) as (id int) `);
+            return res.status(200).json(rows);
+        }catch(error)
+        {
+            console.log("Deu erro");
+        }
+    }
+
     async CreateTags(req:Request, res:Response)
     {
 

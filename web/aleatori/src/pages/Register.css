@@ -35,7 +35,7 @@ body{
     font-size: 18px;
     height: 40px;
     display: flex;
-    border: none;
+    border-bottom: solid #ffffff 1px;
     padding: 10px 10px;
     font: bold 600;
     font-family: Arial;

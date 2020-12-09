@@ -1,4 +1,5 @@
-export default {
+
+export default class Chatfunc{
   sendMessage(message:string){
     const div = document.createElement('div')
     div.classList.add('user_message')
@@ -13,8 +14,8 @@ export default {
     msg.classList.add('text')
     msg.innerText = message
 
-    //document.querySelector('.chat_messages').appendChild(div)
-},
+      //document.querySelector('.chat_messages').appendChild(div)
+  }
 
  serverMessage(message:string){
     const div = document.createElement('div')
@@ -31,5 +32,5 @@ export default {
     msg.innerText = message
 
     //document.querySelector('.chat_messages').appendChild(div)
-}
+  }
 }
