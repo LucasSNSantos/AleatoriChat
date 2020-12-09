@@ -22,15 +22,16 @@ function Login(){
         const userLogin = {username:username.value,user_password:user_password.value}
         console.log(userLogin)
         if(userLogin.username === '' || userLogin.user_password === ''){ 
+
             alert('Algum campo não foi preenchido!')
         }else{
-            await handleLogin(userLogin.username,userLogin.user_password)
-            console.log(user)
-            if(isLogged){
-                goToMainPage()
-            }else{
-                alert('Login Falhou, Usuario ou Senha Incorretos!')
+            try{
+                await handleLogin(userLogin.username,userLogin.user_password)
+                if(isLogged) goToMainPage()
+            }catch(e){
+                alert('Usuario ou senha Incorretos!!!')
             }
+
         }
     }
 
