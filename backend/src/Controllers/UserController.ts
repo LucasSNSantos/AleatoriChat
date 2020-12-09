@@ -23,7 +23,6 @@ export default {
             return res.status(200).json({id, new_pass});
         }catch(error)
         {
-            console.log(error)
             return res.status(400).json({id, new_pass});
         }
     },

@@ -6,7 +6,6 @@ export default {
 
     async Show(req:Request, res:Response) 
     {
-
         try
         {
             const tags = await db('tb_tags').select('*');
@@ -34,14 +33,10 @@ export default {
         const data = {
             tag_name: req.body.tag_name,
         }
-        try
-        {
+        
             await db('tb_tags').insert(data);
             return res.status(200).send("Tag " + data.tag_name + " inserida com sucesso");
-        }catch(error)
-        {
-            console.log("Error");
-        }
+        
     }
 
 }

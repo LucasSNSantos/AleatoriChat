@@ -1,4 +1,4 @@
-import { boolean, number } from 'yup';
+
 import AdjList from '../utils/Adjlist';
 import MatrixAdj from '../utils/MatrizAdj';
 import edge from './Edge';
@@ -14,7 +14,7 @@ interface tag_aux{
     id:number;
 }
 interface rtr_aux{
-    caminho:string[];
+    caminho:string;
     chat_id:number;
 }
 class Graph<obj>{
@@ -186,31 +186,41 @@ class Graph<obj>{
     //const grafo = new Graph<User>(false);
     private last_id;
     
-    public onenterTheParty(user:any){
-        if(typeof(user) == undefined)
-            return;
-        //@ts-ignore
-        const new_usr = new Vertex<User>(user?.user_id,user?.username,user)
+    public async onEnterTheParty({id,username}){
+        
+        const new_usr = new Vertex(id,username)
         
         this.AddVertex(new_usr);
         if(this.NumVertex()>=2){
             this.list_Vertex.forEach(async element => {
-            
+                
+
                 if(!this.is_bounded(new_usr,element))
                 {
                      this.AddEdge(new edge(await this.calcweight(new_usr.id,element.id),new_usr,element,false))
                 }
             });
+            if(new_usr.id != this.last_id){
+                    
+                const sala_name = this.last_id
+                await db('tb_sala').insert({sala_name})
+                const [tb_sala_id] = await db('tb_sala').where('sala_name',sala_name).select('sala_id')
+                
+                
+                const caminho = this.Dijkstra(new_usr.id,this.last_id);
+                const new_chat:rtr_aux = {} as rtr_aux;
+                new_chat.caminho = caminho;
+                new_chat.chat_id = tb_sala_id.id; 
+                return new Promise((resolve,reject) =>{
+                    if(tb_sala_id != null) resolve(tb_sala_id.id)
+                    else{
+                        reject('Grafo falhou')
+                    }
+                });
+            }
             this.last_id = new_usr.id;
         }
-        if(new_usr.id != this.last_id){
-            //@ts-ignore
-            const caminho = grafo.Dijkstra(new_usr.id,last_id);
-            const new_chat:rtr_aux = {} as rtr_aux;
-            new_chat.caminho = caminho;
-            new_chat.chat_id = 1; 
-            return new_chat;
-        }
+        
         
         //conectar (tantos usuarios)
     }
@@ -233,17 +243,17 @@ class Graph<obj>{
             }
         }
         return peso;
-    }   
-
+    }
+    
     public Dijkstra(source:number, dest:number)
     {
         var matrix:MatrixAdj = new MatrixAdj(this);
         var out_put:string = "";
         const n = this.NumVertex();
         
-        var parent:number[] = new number[n];
-        var dist:number[] = new number[n];
-        var visitado:boolean[] = new boolean[n];
+        var parent:number[] = new Number[n];
+        var dist:number[] = new Number[n];
+        var visitado:boolean[] = new Boolean[n];
 
         for (let i = 0; i < n; i++)
         {
@@ -275,7 +285,8 @@ class Graph<obj>{
 
         return out_put;
     }
+
     //#endregion
 }
 
-export default Graph;
+export default new Graph(false);

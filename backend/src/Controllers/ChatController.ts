@@ -4,14 +4,14 @@ import db from '../Database/connection';
 export default {
     async Index(req:Request, res:Response)
     {
-        var response;
+        let response;
         try
         {
             response = await db('tb_chat_sala').select('*');
             
         }catch(error)
         {
-            console.log(error);
+            return res.sendStatus(400)
         }
         return res.status(200).json(response);
     },
@@ -34,7 +34,7 @@ export default {
             return res.status(200).send("Chat criado com sucesso");
         }catch(error)
         {
-            console.log(error);
+            return res.sendStatus(400)
         }
     }
 };

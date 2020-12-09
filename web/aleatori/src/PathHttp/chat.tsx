@@ -1,6 +1,7 @@
-import React,{useContext} from 'react'
+import React,{useContext, useEffect} from 'react'
 import '../pages/global.css'
 import '../pages/chat.css'
+import api from '../api/api'
 import LoginContext from '../context/loginContext';
 import logo from '../aleatori.png'
 import IO from "socket.io-client"
@@ -18,10 +19,17 @@ interface User{
 }
 
 function Chat(){
-    
     const socket = IO(ENDPOINT,{autoConnect:true})
     const {user} = useContext(LoginContext)
     const chate  = new chat();
+    let id = undefined;
+
+    useEffect(()=>{
+        (async() =>{
+            const data = {username:user?.username}
+            id = await api.post('sala',data)
+        })()
+    })
 
     function send(){
         var buffer = document.querySelector('#chat_aux') as HTMLInputElement;
@@ -29,7 +37,8 @@ function Chat(){
         chate.sendMessage(buffer.value,document.querySelector('.chat_messages') as HTMLDivElement,str)
         buffer.value = '';
     }
-
+    if(id != undefined) socket.emit('joinSala',{id})
+    
     return(
         <div id="content_wrapper">
             <div className="Members">

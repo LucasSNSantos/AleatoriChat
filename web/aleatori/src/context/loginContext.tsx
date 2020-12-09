@@ -17,7 +17,7 @@ interface apiResponse{
     isLogged:boolean;
     user:User | null;
     //token:string | null;
-    //loading:boolean;
+    loading:boolean;
     handleLogin(username:string,user_password:string):Promise<void>
 }
 
@@ -30,7 +30,7 @@ const loginContext = createContext<apiResponse>({} as apiResponse)
 export function LoginProvider({children}:props){
     const [user,setUser] = useState<User|null>(null)
     const [token,setToken] = useState<string|null>(null)
-    //const [loading,setLoading] = useState<boolean>(false)
+    const [loading,setLoading] = useState<boolean>(true)
     const [isLogged,setLogged] = useState<boolean>(false)
 
     useEffect(()=>{
@@ -40,7 +40,8 @@ export function LoginProvider({children}:props){
 
             if(storagedHash && storagedUser){
                 setUser(JSON.parse(storagedUser!))
-                //setLoading(false)
+                setLogged(true)
+                setLoading(false)
             }
         })()
     },[])
@@ -55,13 +56,11 @@ export function LoginProvider({children}:props){
             await localStorage.setItem('token',data?.hash)
             await localStorage.setItem('user',JSON.stringify(data?.user))
             api.defaults.headers.token = data.hash
-        
-        
     }
 
 
     return (
-        <loginContext.Provider value={{user:user,isLogged:!!user,handleLogin}}>
+        <loginContext.Provider value={{user:user,isLogged:!!user,loading:loading,handleLogin}}>
             {children}
         </loginContext.Provider>
     )
