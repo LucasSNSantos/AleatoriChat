@@ -24,7 +24,7 @@ export default {
             return res.status(200).json(rows);
         }catch(error)
         {
-            console.log("Deu erro");
+            console.log(error);
         }
     },
 

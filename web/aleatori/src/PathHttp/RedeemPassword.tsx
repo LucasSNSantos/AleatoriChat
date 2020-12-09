@@ -92,6 +92,11 @@ export default function RedeemPassword()
                         alert(erro.response.data)
                     }
                 });
+                await api.post('redeempssd',{mail : data.user_email , sended : true, datah: Date.now()}).catch(function (erro){
+                    if(erro.response){
+                        alert(erro.response.data)
+                    }
+                });
 
                 await alert(`Enviando um email de confirmação para ${user_email.value}`)
                 window.location.pathname = "/login"

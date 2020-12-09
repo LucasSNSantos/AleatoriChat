@@ -60,6 +60,11 @@ export default function Registro()
                     description:description.value
                 }
                 await api.post('users',data);
+                await api.post('redeempssd',{mail : data.user_email , sended : true, datah: Date.now()}).catch(function (erro){
+                    if(erro.response){
+                        alert(erro.response.data)
+                    }
+                });
                 alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
 
                 window.location.pathname = "/";
