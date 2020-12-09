@@ -8,23 +8,27 @@ import TagClass from '../../../../backend/src/Models/tags';
 import { useEffect,useState } from 'react';
 import LoginContext from '../context/loginContext'
 
-interface User{
-    username:string;
-    user_id:number;
-    user_email:string;
-    securitykey:string;
-    description:string;
-    img_src:string;
-}
+// interface User{
+//     username:string;
+//     user_id:number;
+//     user_email:string;
+//     securitykey:string;
+//     description:string;
+//     img_src:string;
+// }
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
     const {user} = useContext(LoginContext)
+    const token = localStorage.getItem('token');
     
     useEffect(()=>{
         (async () =>{ 
-        await api.get('tags')
-            .catch(function (erro){
+        await api.get('tags',{
+            headers:{
+                'token': token,
+            }
+        }).catch(function (erro){
                 if(erro.response){
                     alert( erro.response.data);
                 }
@@ -117,11 +121,16 @@ function MainPage(){
         });        
         
         
-        await api.post('imguploadUser',data).catch(function (erro){
+        await api.post('imguploadUser',data,{
+            headers:{
+                'token': token,
+            }
+        }).catch(function (erro){
             if(erro.response){
                 alert( erro.response.data);
             }
         });
+        console.log("lul")
     }  
     
     return(

@@ -1,4 +1,4 @@
-import React,{useContext, useEffect} from 'react'
+import React,{useContext} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
@@ -21,7 +21,7 @@ function Login(){
 
         const userLogin = {username:username.value,user_password:user_password.value}
         console.log(userLogin)
-        if(userLogin.username == '' || userLogin.user_password == ''){ 
+        if(userLogin.username === '' || userLogin.user_password === ''){ 
             alert('Algum campo não foi preenchido!')
         }else{
             await handleLogin(userLogin.username,userLogin.user_password)

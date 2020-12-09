@@ -8,8 +8,6 @@ import Graph from "../Grafo/Classes/Graph";
 import Vertex from '../Grafo/Classes/Vertex';
 import edge from '../Grafo/Classes/Edge';
 import api from '../api/api';
-import { AxiosResponse } from 'axios';
-
 const ENDPOINT = 'http://localhost:4444'
 
 interface User{
@@ -31,7 +29,6 @@ function Chat(){
 
     async function enterTheParty(event:React.MouseEvent<HTMLHeadingElement, MouseEvent>){
         event.preventDefault();
-        console.log(user)
         if(typeof(user) == undefined)
             return;
         //@ts-ignore
@@ -54,7 +51,7 @@ function Chat(){
         <div id="content_wrapper">
             <div className="Members">
                 Members
-                {user?.username}
+                {"\n"+user?.username}
             </div>
             <div id="chat">
                 <header>
