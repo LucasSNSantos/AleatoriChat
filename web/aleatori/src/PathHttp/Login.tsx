@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext, useEffect} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import '../pages/global.css'
 import '../pages/Login.css'
@@ -7,36 +7,36 @@ import Navbar from '../Components/NavBar'
 import loginContext from '../context/loginContext'
 
 function Login(){
-    const { handleLogin,token,user} = useContext(loginContext)
+    const {handleLogin,user,isLogged} = useContext(loginContext)
     const history = useHistory()
-    
-    async function validate_login_by_PF(event:React.MouseEvent<HTMLAnchorElement, MouseEvent>){
-        event.preventDefault()
 
+    const goToMainPage = () =>{
+        history.push('/MainPage')
+    }
+
+
+    async function validate_login_by_PF(){
         const username = document.querySelector('.user_input') as HTMLInputElement
         const user_password = document.querySelector('.pass_input') as HTMLInputElement
 
         const userLogin = {username:username.value,user_password:user_password.value}
-
-        if(userLogin.username === '' || userLogin.user_password === ''){ 
+        console.log(userLogin)
+        if(userLogin.username == '' || userLogin.user_password == ''){ 
             alert('Algum campo não foi preenchido!')
         }else{
             await handleLogin(userLogin.username,userLogin.user_password)
-            const token = localStorage.getItem('token')
-            
-            if(token){ 
-                history.push('mainpage')
-            }
-            else{
-                console.log('token nulo!')
-                localStorage.removeItem('token')
-                localStorage.removeItem('user')
+            console.log(user)
+            if(isLogged){
+                goToMainPage()
+            }else{
+                alert('Login Falhou, Usuario ou Senha Incorretos!')
             }
         }
     }
 
     return (
-        <div id="landing-page">                
+        
+        <div id="landing-page">  
             <div className="main">
                 <Navbar/>
                 <img src= {Aleatori_Logo} width="50" height="50" alt="LOGINHO" id="loginho"/>
@@ -66,6 +66,6 @@ function Login(){
             </div>
         </div>
     );
-}   
+}
 
 export default Login; 

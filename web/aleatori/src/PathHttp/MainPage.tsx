@@ -19,48 +19,23 @@ interface User{
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
-    const [user, setUser] = useState<User>();
-    const ctx = useContext(LoginContext)
-    const strg_user = localStorage.getItem('user')
-    const strg_tkn = localStorage.getItem('token')
+    const {user} = useContext(LoginContext)
     
     useEffect(()=>{
-        // if(!strg_user)
-        //     return;
-        // if(!strg_tkn)
-        //     return;
-        
-        api.get(`users/${strg_user}`,{
-            headers:{
-                'token': strg_tkn
-            }
-        }).catch(function (erro){
-            if(erro.response){
-                alert( erro.response.data);
-            }
-        }).then(response =>{
-            if(!response){
-                return;
-            }
-            setUser(response.data);
-        });
-    },[strg_tkn,strg_user]);
-    
-    useEffect(()=>{
-        api.get('tags',{
-            headers:{
-                'token':strg_tkn
-            }
-        }).catch(function (erro){
-            if(erro.response){
-                alert( erro.response.data);
-            }
-        }).then(response =>{
-            if(!response){
-                return;
-            }
-            setTags(response.data);
-        });
+        (async () =>{ 
+        await api.get('tags')
+            .catch(function (erro){
+                if(erro.response){
+                    alert( erro.response.data);
+                }
+            }).then(response =>{
+                if(!response){
+                    return;
+                }
+                setTags(response.data);
+            })
+        }
+    )()
     },[])
 
     //Not efficient at all!
@@ -134,26 +109,21 @@ function MainPage(){
             return;
         }
     
-        const data= new FormData();
+        const data = new FormData();
         const images = Array.from(event.target.files);
-        data.append("username",`${ctx.user?.username}`);
+        data.append("username",`${user?.username}`);
         images.forEach(element => {
             data.append("image",element);
         });        
         
         
-        await api.post('imguploadUser',data,{
-            headers:{
-                'token': ctx.token,
-            }
-        }).catch(function (erro){
+        await api.post('imguploadUser',data).catch(function (erro){
             if(erro.response){
                 alert( erro.response.data);
             }
         });
     }  
-    console.log(ctx);
-
+    
     return(
         <div className="Main-Page">
             <NavBar/>
@@ -179,12 +149,12 @@ function MainPage(){
                <div className="Main-Page-User">
                     
                     <header className="user_panel">
-                        <img alt="img_profile" onClick={()=>showUpload()} src={ctx.user?.img_src}/>
+                        <img alt="img_profile" onClick={()=>showUpload()} src={user?.img_src}/>
                         <h4 className="vPerfil">
-                            {ctx.user?.username}
+                            {user?.username}
                         </h4>
                         <p>
-                            {ctx.user?.description}
+                            {user?.description}
                         </p>
                     </header>
                </div>

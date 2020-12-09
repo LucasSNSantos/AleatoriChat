@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
 
-    background: #495369;
+    background: #955e91;
 }
 #chat{
     width: 100%;
@@ -16,7 +16,10 @@
     height: 100%;
     max-height: 800px;
 
-    border-radius: 7px;
+    display: inline-block;
+
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 
     background: #181c24;
 }
@@ -33,9 +36,30 @@
 }
 #chat header img{
     position: relative;
-    top:15px;
+    top:25px;
     bottom: 25px;
-    left: 0;
+    right: 0;
+}
+
+#chat .chat_messages{
+    background: #FF0;
+    width: 100%;
+    
+}
+
+#chat footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+#chat footer button{
+
 }
 
 #chat_aux{

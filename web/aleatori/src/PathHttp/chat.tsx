@@ -25,7 +25,7 @@ interface User{
 function Chat(){
     
     const socket = IO(ENDPOINT,{autoConnect:true})
-    const {user,token} = useContext(LoginContext)
+    const {user} = useContext(LoginContext)
     const grafo = new Graph<User>(false);
 
 
@@ -62,9 +62,10 @@ function Chat(){
                     <h1 onClick={enterTheParty}>AleatoriChat</h1>
                 </header>
                 <div className="chat_messages"></div>
-                <div>
+                <footer>
                     <input id="chat_aux" className="chat_feed" placeholder="Type here:"/>
-                </div>
+                    <button></button>
+                </footer>
             </div>
             
         </div>
