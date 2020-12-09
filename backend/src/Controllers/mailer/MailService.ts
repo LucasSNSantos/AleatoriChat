@@ -9,6 +9,7 @@ import * as nodemailer from 'nodemailer';
           
           host: "smtp.gmail.com",
           port: 587,
+          tls: { rejectUnauthorized: false },
           secure: false, // true for 465, false for other ports
           auth: {
             user: "noreply.aleatorichat@gmail.com", // generated ethereal user

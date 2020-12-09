@@ -42,8 +42,7 @@ export default {
 
     async create(request: Request, response:Response){
         const { username,user_password,user_email,description} = request.body
-        console.log(request.body)
-
+    
         const data = {
             username: username,
             user_password:user_password,
@@ -52,8 +51,12 @@ export default {
             description:description,
             img_src:"https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg"
         }
+        console.log(data)
         try{      
-            await db('tb_user').insert(data);
+            await db('tb_user').insert(data).catch(e => {
+                console.log(e)
+            }); 
+
             //trigger de cadastro
             if(await db('tb_user').select('username').where('username',data.username)){
                 
