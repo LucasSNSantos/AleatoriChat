@@ -10,23 +10,23 @@ import LoginContext from '../context/loginContext'
 
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
-    const ctx = useContext(LoginContext)
+    const {user} = useContext(LoginContext)
     
     useEffect(()=>{
-        api.get('tags',{
-            headers:{
-                'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDczOTE1NDMsImV4cCI6MTYwNzQ3Nzk0M30.Bdtv_3bChLj0zZkV8sCY-s02_VGKBc5NRlcpIknXVHw'
-            }
-        }).catch(function (erro){
-            if(erro.response){
-                alert( erro.response.data);
-            }
-        }).then(response =>{
-            if(!response){
-                return;
-            }
-            setTags(response.data);
-        });
+        (async () =>{ 
+        await api.get('tags')
+            .catch(function (erro){
+                if(erro.response){
+                    alert( erro.response.data);
+                }
+            }).then(response =>{
+                if(!response){
+                    return;
+                }
+                setTags(response.data);
+            })
+        }
+    )()
     },[])
 
     //Not efficient at all!
@@ -111,7 +111,7 @@ function MainPage(){
             return;
         }
     
-        const data= new FormData();
+        const data = new FormData();
         const images = Array.from(event.target.files);
         data.append("username",'lhimbo');
         images.forEach(element => {
@@ -119,17 +119,13 @@ function MainPage(){
         });        
         
         
-        await api.post('imguploadUser',data,{
-            headers:{
-                'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDczOTE1NDMsImV4cCI6MTYwNzQ3Nzk0M30.Bdtv_3bChLj0zZkV8sCY-s02_VGKBc5NRlcpIknXVHw'
-            }
-        }).catch(function (erro){
+        await api.post('imguploadUser',data).catch(function (erro){
             if(erro.response){
                 alert( erro.response.data);
             }
         });
     }  
-    console.log(ctx.user?.username)
+    
     return(
         <div className="Main-Page">
             <NavBar/>

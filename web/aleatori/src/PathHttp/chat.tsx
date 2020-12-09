@@ -20,12 +20,10 @@ function page(){
                     <h1>AleatoriChat</h1>
                 </header>
                 <div className="chat_messages"></div>
-                <div>
+                <footer>
                     <input id="chat_aux" className="chat_feed" placeholder="Type here:"/>
-                    <footer>
-                        <button></button>
-                    </footer>
-                </div>
+                    <button></button>
+                </footer>
             </div>
             
         </div>

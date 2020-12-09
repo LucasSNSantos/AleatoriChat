@@ -7,6 +7,7 @@ import multer from 'multer';
 import imgController from './Controllers/imgController';
 import uploadConfig from './config/upload';
 import ChatController from './Controllers/ChatController';
+import loadingController from './Controllers/loadingController'
 
 const routes = Router();
 const upload = multer(uploadConfig);
@@ -28,6 +29,8 @@ routes.post('/Chats', ChatController.CreateChat);
 //rotas da Tag
 routes.get('/Tags', TagController.Show);
 routes.post('/Tags', TagController.CreateTags);
+
+//routes.post('/loading',loadingController.enterTheParty)
 
 export default routes;
 
