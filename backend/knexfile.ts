@@ -16,7 +16,7 @@ export default  {
   staging: {
     client: "pg",
     connection: {
-      database: "aleatoriDB",
+      database: "postgres",
       user: "admin",
       password: "randomadmin"
     },
