@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from '../Components/NavBar';
 import api from '../api/api'
 import '../pages/Register.css';
+import { AxiosResponse } from 'axios';
 
 export default function Registro()
 {
@@ -60,12 +61,8 @@ export default function Registro()
                     description:description.value
                 }
                 
-                await api.post('users',data).catch(function (erro){
-                    if(erro.response){
-                        throw Object.assign(new Error( erro.response.data),{code:400});
-                    }
-                });
-                
+                await api.post('users',data);
+                console.log("uu")
                 alert(`Registrado, um email de confirmação será enviado para ${user_email.value}`);
                 window.location.pathname = "/";
             }else 

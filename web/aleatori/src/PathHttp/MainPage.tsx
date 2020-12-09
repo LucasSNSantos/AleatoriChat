@@ -8,14 +8,27 @@ import TagClass from '../../../../backend/src/Models/tags';
 import { useEffect,useState } from 'react';
 import LoginContext from '../context/loginContext'
 
+// interface User{
+//     username:string;
+//     user_id:number;
+//     user_email:string;
+//     securitykey:string;
+//     description:string;
+//     img_src:string;
+// }
+
 function MainPage(){
     const [tags, setTags] = useState<TagClass[]>([]);
     const {user} = useContext(LoginContext)
+    const token = localStorage.getItem('token');
     
     useEffect(()=>{
         (async () =>{ 
-        await api.get('tags')
-            .catch(function (erro){
+        await api.get('tags',{
+            headers:{
+                'token': token,
+            }
+        }).catch(function (erro){
                 if(erro.response){
                     alert( erro.response.data);
                 }
@@ -39,7 +52,6 @@ function MainPage(){
             if(event.keyCode === 13)
             {
                 var aux = tag_s.children;
-                console.log(aux)
                 for(let i=0;i<tag_s.children.length;i++)
                 {
                     var str = aux[i].innerHTML.toLowerCase();
@@ -79,16 +91,6 @@ function MainPage(){
         // }
         // cria tags
         // bota na tabela associativa
-        console.log("a")
-        // await api.post('Chats',data,{
-        //     headers:{
-        //         'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDczOTE1NDMsImV4cCI6MTYwNzQ3Nzk0M30.Bdtv_3bChLj0zZkV8sCY-s02_VGKBc5NRlcpIknXVHw'
-        //     }
-        // }).catch(function (erro){
-        //     if(erro.response){
-        //         alert( erro.response.data);
-        //     }
-        // });
     }
     function showUpload()
     {
@@ -113,17 +115,22 @@ function MainPage(){
     
         const data = new FormData();
         const images = Array.from(event.target.files);
-        data.append("username",'lhimbo');
+        data.append("username",`${user?.username}`);
         images.forEach(element => {
             data.append("image",element);
         });        
         
         
-        await api.post('imguploadUser',data).catch(function (erro){
+        await api.post('imguploadUser',data,{
+            headers:{
+                'token': token,
+            }
+        }).catch(function (erro){
             if(erro.response){
                 alert( erro.response.data);
             }
         });
+        console.log("lul")
     }  
     
     return(
@@ -145,20 +152,18 @@ function MainPage(){
                         <label htmlFor="fileinput" id="loadimg">Upload image</label>
                         <input onChange={Submit_img} id="fileinput" type='file' />
                         <span id='file-name'></span>
-                        {/*<input type='text' placeholder="Image Link"/>
-                        <button id="btn-upload-submit" onClick={()=>Submit_img()} className="btn-upload">Submit</button>*/}                        
                         <button id="btn-upload-close" onClick={()=>Close_upload()} className="btn-upload">Close</button>
                     </form>
                 </div>
                <div className="Main-Page-User">
                     
                     <header className="user_panel">
-                        <img alt="img_profile" onClick={()=>showUpload()} src="https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg"/>
+                        <img alt="img_profile" onClick={()=>showUpload()} src={user?.img_src}/>
                         <h4 className="vPerfil">
-                            User
+                            {user?.username}
                         </h4>
                         <p>
-                            Description
+                            {user?.description}
                         </p>
                     </header>
                </div>
@@ -193,7 +198,7 @@ function MainPage(){
     );
 
     function Aleatori(){
-        window.location.pathname="/chat"
+        window.location.pathname = '/chat'
     }
     
 }

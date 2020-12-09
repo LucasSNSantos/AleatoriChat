@@ -10,6 +10,7 @@ interface User{
     user_email:string;
     securitykey:string;
     description:string;
+    img_src:string;
 }
 
 interface apiResponse{

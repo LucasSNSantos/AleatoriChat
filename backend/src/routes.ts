@@ -28,6 +28,7 @@ routes.get('/Chats', ChatController.Index);
 routes.post('/Chats', ChatController.CreateChat);
 //rotas da Tag
 routes.get('/Tags', TagController.Show);
+routes.get('/Tags/:id', TagController.fromview);
 routes.post('/Tags', TagController.CreateTags);
 
 //routes.post('/loading',loadingController.enterTheParty)
